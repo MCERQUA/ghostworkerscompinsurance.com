@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Netlify Forms Detection</title></head>
+<body>
+  <form name="quote" netlify netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="quote" />
+    <input name="bot-field" />
+    <input name="firstName" />
+    <input name="lastName" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="businessName" />
+    <input name="state" />
+    <input name="trade" />
+    <input name="yearsInBusiness" />
+    <input name="coverageStart" />
+  </form>
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact" />
+    <input name="bot-field" />
+    <input name="name" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="subject" />
+    <textarea name="message"></textarea>
+  </form>
+</body>
+</html>

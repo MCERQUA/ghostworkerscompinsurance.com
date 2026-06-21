@@ -1,0 +1,73 @@
+# GhostWorkersCompInsurance.com — LLMs.txt
+
+## Site Overview
+GhostWorkersCompInsurance.com is a specialized insurance agency website focused on ghost workers compensation insurance. The site helps independent contractors, sole proprietors, and small business owners obtain workers comp coverage quickly — in minutes rather than days. Operated by Contractors Choice Agency LLC, a licensed insurance agency.
+
+## Business Information
+- **Business Name:** GhostWorkersCompInsurance.com (operated by Contractors Choice Agency LLC)
+- **License Status:** Licensed insurance agent in 47 states
+- **Phone:** 844-967-5247
+- **Email:** quotes@ghostworkerscompinsurance.com
+- **Service Area:** All U.S. states except monopolistic states (ND, OH, WA, WY)
+- **Specialty:** Ghost workers compensation policies — instant quotes, same-day certificates
+
+## What Is a Ghost Workers Comp Policy?
+A ghost workers compensation policy is a legitimate workers' comp insurance product for business owners who have zero employees (or exclude themselves from coverage). It provides a certificate of insurance satisfying contractor licensing requirements without insuring actual employees. Premiums typically range from $800–$2,500/year.
+
+## Key Pages
+
+### Homepage
+**URL:** https://ghostworkerscompinsurance.com/
+**Description:** Main landing page emphasizing instant quotes and same-day certificates. Includes hero section, how-it-works (4 steps), services grid, testimonials, and FAQ.
+
+### Get a Quote
+**URL:** https://ghostworkerscompinsurance.com/quote
+**Description:** 3-step quote form collecting contact info, business details (state, trade, years in business), and coverage preferences (limits, start date, additional insured).
+
+### About
+**URL:** https://ghostworkerscompinsurance.com/about
+**Description:** About Contractors Choice Agency — mission, specialization in ghost WC policies, carrier partners, and licensing.
+
+### Contact
+**URL:** https://ghostworkerscompinsurance.com/contact
+**Description:** Contact form plus direct phone and email for quote inquiries. Office hours Mon–Fri 8am–6pm CT.
+
+### Blog
+**URL:** https://ghostworkerscompinsurance.com/blog
+**Description:** Resource center with guides on ghost WC policies, same-day certificates, cost information, and state-specific requirements.
+
+## Coverage Pages
+
+### Ghost WC Policy
+**URL:** https://ghostworkerscompinsurance.com/services/ghost-wc-policy
+**Description:** What is a ghost workers comp policy, who needs it, how it works, state availability, and cost factors.
+
+### Same-Day Coverage
+**URL:** https://ghostworkerscompinsurance.com/services/same-day-coverage
+**Description:** How same-day workers comp coverage works, application process, binder vs certificate, timeline.
+
+### Employer Audit Defense
+**URL:** https://ghostworkerscompinsurance.com/services/employer-audit-defense
+**Description:** Workers comp audit defense, how ghost policies minimize audit exposure, documentation guidance.
+
+### Payroll Protection
+**URL:** https://ghostworkerscompinsurance.com/services/payroll-protection
+**Description:** How payroll affects WC premiums, ghost policy advantage, flex premium structures.
+
+### Contractor Ghost Coverage
+**URL:** https://ghostworkerscompinsurance.com/services/contractor-ghost-coverage
+**Description:** Ghost coverage for independent contractors and 1099 workers, contractor license requirements by state.
+
+### Instant Certificates
+**URL:** https://ghostworkerscompinsurance.com/services/instant-certificates
+**Description:** Instant COI delivery, additional insured endorsements, electronic delivery process.
+
+## Legal
+- Privacy Policy: https://ghostworkerscompinsurance.com/privacy
+- Terms of Service: https://ghostworkerscompinsurance.com/terms
+
+## Important Coverage Notes
+- Ghost WC policies are NOT available in monopolistic states: North Dakota, Ohio, Washington, Wyoming
+- Coverage quotes are estimates; final premiums determined by carrier underwriting
+- This site provides insurance services, not legal advice
+- All policies placed with A-rated or better carriers
