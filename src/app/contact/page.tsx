@@ -16,6 +16,17 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (form["bot-field"]) return;
+    // Deliver lead directly to the leads webhook (SSR Netlify form capture is unreliable).
+    try {
+      const WEBHOOK_URL = `https://josh.jam-bot.com/social-api/api/leads/webhook/netlify?tenant=josh&site=ghostworkerscompinsurance.com`;
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ form_name: "contact", source: "ghostworkerscompinsurance.com", ...form }),
+      });
+    } catch {
+      // lead webhook failed — do not block submission UX
+    }
     const data = new FormData();
     data.append("form-name", "contact");
     Object.entries(form).forEach(([k, v]) => data.append(k, v));
