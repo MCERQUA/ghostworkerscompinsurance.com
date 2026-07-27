@@ -54,7 +54,7 @@ export default function QuotePage() {
     data.append("form-name", "quote");
     Object.entries(form).forEach(([k, v]) => data.append(k, v));
     try {
-      await fetch("/", { method: "POST", body: data });
+      await fetch('/__forms.html', { method: "POST", body: data });
     } catch {}
     setSubmitted(true);
   };
