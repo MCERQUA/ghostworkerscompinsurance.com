@@ -64,7 +64,7 @@ export default async function BlogPostPage({
       <Navbar />
       <main className="pt-16">
         {/* Header */}
-        <header className="hero-gradient py-14">
+        <header className="hero-gradient py-20 md:py-28">
           <div className="container-wide max-w-4xl">
             <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-medium mb-6" style={{ color: "#16a34a" }}>
               <ArrowLeft size={14} /> Back to Blog
@@ -91,7 +91,7 @@ export default async function BlogPostPage({
           </div>
         </header>
 
-        <div className="container-wide max-w-4xl py-12">
+        <div className="container-wide max-w-4xl py-16">
           <div className="grid lg:grid-cols-3 gap-10">
             {/* Article body */}
             <article className="lg:col-span-2 prose prose-lg max-w-none"
@@ -146,7 +146,7 @@ export default async function BlogPostPage({
         </div>
 
         {/* Bottom CTA */}
-        <section className="py-14" style={{ background: "#f0fdf4" }}>
+        <section className="py-20" style={{ background: "#f0fdf4" }}>
           <div className="container-wide text-center">
             <h2 className="text-2xl font-bold mb-4" style={{ color: "#111827" }}>
               Ready for Instant Ghost WC Coverage?

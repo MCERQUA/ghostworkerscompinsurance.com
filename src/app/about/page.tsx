@@ -19,7 +19,7 @@ export default function AboutPage() {
       <main className="pt-16">
 
         {/* Hero */}
-        <section className="hero-gradient py-20">
+        <section className="hero-gradient py-20 md:py-28">
           <div className="container-wide text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-6" style={{ background: "#dcfce7", color: "#15803d" }}>
@@ -88,8 +88,8 @@ export default function AboutPage() {
         </section>
 
         {/* Stats */}
-        <section style={{ background: "#0f1f14" }}>
-          <div className="container-wide py-16">
+        <section className="py-14" style={{ background: "#0f1f14" }}>
+          <div className="container-wide">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
                 { value: "3,200+", label: "Contractors Covered", icon: <Users size={24} /> },

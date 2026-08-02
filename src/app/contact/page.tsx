@@ -27,10 +27,16 @@ export default function ContactPage() {
     } catch {
       // lead webhook failed — do not block submission UX
     }
-    const data = new FormData();
-    data.append("form-name", "contact");
-    Object.entries(form).forEach(([k, v]) => data.append(k, v));
-    try { await fetch('/__forms.html', { method: "POST", body: data }); } catch {}
+    const params = new URLSearchParams();
+    params.append("form-name", "contact");
+    Object.entries(form).forEach(([k, v]) => params.append(k, v));
+    try {
+      await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
+    } catch {}
     setSubmitted(true);
   };
 
@@ -62,7 +68,7 @@ export default function ContactPage() {
       <Navbar />
       <main className="pt-16">
         {/* Header */}
-        <section className="hero-gradient py-16 text-center">
+        <section className="hero-gradient py-20 md:py-28 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <h1 className="section-title mb-4">Contact Us</h1>
             <p className="section-subtitle mx-auto" style={{ color: "#374151" }}>
@@ -71,7 +77,7 @@ export default function ContactPage() {
           </motion.div>
         </section>
 
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-white">
           <div className="container-wide">
             <div className="grid lg:grid-cols-3 gap-10">
               {/* Contact info */}

@@ -6,3 +6,5 @@ deploy_key
 deploy_key.pub
 *.tsbuildinfo
 next-env.d.ts
+
+.autosave-gated

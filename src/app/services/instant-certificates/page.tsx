@@ -572,7 +572,7 @@ export default function InstantCertificatesPage() {
         </section>
 
         {/* ── TESTIMONIALS ── */}
-        <section className="py-16" style={{ background: "#f0fdf4" }}>
+        <section className="py-20" style={{ background: "#f0fdf4" }}>
           <div className="container-wide">
             <div className="grid md:grid-cols-3 gap-6">
               {[

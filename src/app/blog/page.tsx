@@ -19,7 +19,7 @@ export default function BlogPage() {
       <Navbar />
       <main className="pt-16">
         {/* Header */}
-        <section className="hero-gradient py-16 text-center">
+        <section className="hero-gradient py-20 md:py-28 text-center">
           <div className="container-wide">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4" style={{ background: "#dcfce7", color: "#15803d" }}>
               <Zap size={14} />
@@ -33,7 +33,7 @@ export default function BlogPage() {
         </section>
 
         {/* Posts */}
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-white">
           <div className="container-wide">
             {posts.length === 0 ? (
               <div className="text-center py-20">
@@ -83,7 +83,7 @@ export default function BlogPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16" style={{ background: "#f0fdf4" }}>
+        <section className="py-20" style={{ background: "#f0fdf4" }}>
           <div className="container-wide text-center">
             <h2 className="text-2xl font-bold mb-4" style={{ color: "#111827" }}>Ready to Get Covered?</h2>
             <p className="mb-6" style={{ color: "#374151" }}>

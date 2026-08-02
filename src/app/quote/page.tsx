@@ -50,11 +50,15 @@ export default function QuotePage() {
     } catch {
       // lead webhook failed — do not block submission UX
     }
-    const data = new FormData();
-    data.append("form-name", "quote");
-    Object.entries(form).forEach(([k, v]) => data.append(k, v));
+    const params = new URLSearchParams();
+    params.append("form-name", "quote");
+    Object.entries(form).forEach(([k, v]) => params.append(k, v));
     try {
-      await fetch('/__forms.html', { method: "POST", body: data });
+      await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      });
     } catch {}
     setSubmitted(true);
   };
@@ -99,7 +103,7 @@ export default function QuotePage() {
       <main className="pt-16" style={{ background: "#f0fdf4" }}>
 
         {/* Header */}
-        <section className="py-12 text-center" style={{ background: "linear-gradient(135deg, #f0fdf4, #dcfce7)" }}>
+        <section className="py-20 md:py-28 text-center" style={{ background: "linear-gradient(135deg, #f0fdf4, #dcfce7)" }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4" style={{ background: "white", color: "#15803d" }}>
               <Zap size={14} />

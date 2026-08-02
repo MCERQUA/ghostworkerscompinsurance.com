@@ -3,6 +3,8 @@ import { getAllPosts } from "@/lib/blog";
 
 const BASE = "https://ghostworkerscompinsurance.com";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
   const blogUrls = posts.map((p) => ({

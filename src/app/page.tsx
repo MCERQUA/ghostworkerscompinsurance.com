@@ -204,8 +204,8 @@ export default function HomePage() {
         </section>
 
         {/* ── STATS BAR ── */}
-        <section style={{ background: "#0f1f14" }}>
-          <div className="container-wide py-10">
+        <section className="py-14" style={{ background: "#0f1f14" }}>
+          <div className="container-wide">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
                 { value: "3,200+", label: "Policies Issued" },

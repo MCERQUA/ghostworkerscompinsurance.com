@@ -424,7 +424,7 @@ export default function SameDayCoveragePage() {
         </section>
 
         {/* ── TESTIMONIAL ROW ── */}
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-white">
           <div className="container-wide">
             <div className="grid md:grid-cols-3 gap-6">
               {[

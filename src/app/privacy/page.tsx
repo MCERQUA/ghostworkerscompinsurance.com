@@ -65,7 +65,7 @@ export default function PrivacyPage() {
       <Navbar />
       <main className="pt-16">
         {/* Hero */}
-        <section className="py-14 text-center" style={{ background: "linear-gradient(135deg, #f0fdf4, #dcfce7)" }}>
+        <section className="py-20 md:py-28 text-center" style={{ background: "linear-gradient(135deg, #f0fdf4, #dcfce7)" }}>
           <div className="container-wide">
             <h1 className="text-4xl font-extrabold mb-3" style={{ color: "#111827" }}>Privacy Policy</h1>
             <p style={{ color: "#6b7280" }}>Effective Date: June 1, 2026 &nbsp;|&nbsp; Last Updated: June 21, 2026</p>
@@ -73,7 +73,7 @@ export default function PrivacyPage() {
         </section>
 
         {/* Content */}
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-white">
           <div className="container-wide max-w-3xl">
             <p className="text-lg mb-10" style={{ color: "#374151" }}>
               GhostWorkersCompInsurance.com, operated by Contractors Choice Agency LLC (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;),

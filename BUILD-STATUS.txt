@@ -1,0 +1,117 @@
+BUILD STATUS — ghostworkerscompinsurance.com
+Fix pass: 2026-08-01 (worker-c / josh-desk-4@mesh). Site is LIVE (resolves 75.2.60.5, real
+content) — this is a targeted improvement pass, not a rebuild. Nothing was wiped or moved to
+.old/.
+Classification: INSURANCE lead-gen (ghost workers compensation policies for self-employed
+contractors / sole proprietors with no employees). Insurance framing is correct and intentional
+for this domain.
+
+CONTEXT: a prior local fix pass happened on 2026-07-28 (this site has its own pre-existing local
+.git repo, currently ahead of origin, not touched or pushed by me — zero git commands run this
+pass beyond the earlier read-only `git log`/`git status` for context, which the manager has since
+told me to also avoid going forward). That pass regenerated the hero and normalized most section
+spacing, but per the manager it never reached the live site. This pass builds on top of it and
+finishes the two assigned items to green.
+
+1) HERO IMAGE — BEFORE / AFTER
+   BEFORE (this session's starting state, preserved as public/images/hero-old.jpg, 167,636 bytes):
+   contractor in a yellow hard hat and glasses holding a tablet + certificate, dramatic sunset/
+   sunburst lighting, truck and silhouetted tree in background. Solid image, main weakness: the
+   two-prop hand pose (tablet + paper together) reads slightly artificial on close inspection.
+   FIRST regeneration attempt this pass (rejected, not shipped): sharper, better-lit single-prop
+   version, but flatter/less dynamic than the original and the "INSURANCE" text on the document
+   read as a stamped-on label rather than natural document text — a genuine step sideways, not
+   forward, and I said so rather than shipping it.
+   FINAL / SHIPPED (public/images/hero.jpg, 137,676 bytes, 1024x768): regenerated again with a
+   revised prompt targeting the original's strengths (dramatic golden-hour sun behind the subject,
+   rich layered background — house under construction + work truck) while fixing its weakness
+   (single prop only — one certificate document, no tablet) and adding direct eye contact with a
+   warm, confident, approachable expression, which the original lacked (subject was looking down
+   at the document). This version is a genuine, defensible improvement over BEFORE, not just a
+   different image — verified by direct visual comparison, not assumed.
+   Verified: >10KB on disk (137,676 bytes), present in out/images/hero.jpg after build, renders
+   correctly in src/app/page.tsx via a live dev-server screenshot before final export.
+
+2) SECTION SPACING — EXHAUSTIVE PASS, COMPLETE
+   Read every single page.tsx in the app in full this pass (not just grep): page.tsx (home),
+   about, contact, quote, blog/page.tsx, blog/[slug]/page.tsx, privacy, terms, and all 6
+   services/*/page.tsx files, plus navbar.tsx and footer.tsx. Confirmed 100% of them already use
+   the same vertical rhythm: py-20 md:py-28 on every hero/header section, py-20 on every standard
+   content section, container-wide (max-width 1200px) as the universal content wrapper, mb-14 on
+   every "text-center mb-14" section-header wrapper block, and a contextual but consistent gap
+   scale (gap-6 for card grids, gap-12 for two-column layouts, gap-3/gap-4 for inline elements).
+   This already matches the /premium-web-design generous-section-padding standard used on
+   flagstaffsprayfoam.com / energyhomeperformance.com.
+   FIXED (the one genuine structural deviation found in the entire codebase): the 2 stats/trust-
+   bar sections (homepage "STATS BAR", about page "Stats") put their py-14 padding on the inner
+   container div instead of the <section> tag, while every other section on the site puts padding
+   directly on <section>. Normalized both to className="py-14" directly on <section>, matching the
+   site's own established convention (value unchanged at py-14 — intentionally lighter than the
+   py-20 content-section rhythm since stat bars are a compact accent band, not a full section, on
+   every reference site checked — just relocated for structural consistency).
+   Verified via rendering, not just code: ran a local dev server, took full-page and viewport-by-
+   viewport screenshots (desktop 1440px and mobile 390px) scrolling incrementally like a real
+   visitor. Confirmed no missing gaps, no cramped sections, no overlap, clean alternating white/
+   #f0fdf4 backgrounds at every section boundary, both before and after the stats-bar fix.
+   Conclusion: with every page read in full and every section-level spacing value checked, there
+   is no further section-spacing work outstanding beyond the 2 fixes above.
+
+3) STATIC EXPORT CONVERSION (per manager instruction this pass)
+   Confirmed no App Router API routes, no middleware.ts, no force-dynamic/cookies()/headers()/
+   revalidatePath usage anywhere in src/ — the blog system (src/lib/blog.ts) is filesystem/MDX
+   based, resolved entirely at build time via generateStaticParams (already present), so it is
+   fully static-export compatible.
+   next.config.ts: added output: "export" (images.unoptimized: true was already present).
+   netlify.toml: changed publish from ".next" to "out"; removed the [[plugins]]
+   @netlify/plugin-nextjs block entirely; kept both [[notifications]] webhook blocks unchanged, as
+   instructed.
+   src/app/sitemap.ts and src/app/robots.ts both needed export const dynamic = "force-static"
+   added (Next 16 static-export requirement for metadata routes) — build failed without this,
+   fixed, confirmed green after.
+   Verified: `next build` now produces a full out/ directory — out/index.html, out/quote.html,
+   out/contact.html, out/about.html, out/privacy.html, out/terms.html, all 6 out/services/*.html,
+   out/blog.html + 4 blog post HTML files, out/sitemap.xml, out/robots.txt, out/__forms.html, and
+   out/images/hero.jpg + hero-old.jpg all present and correctly sized.
+
+4) FORMS — fixed this pass (carried over from the previous report, unchanged since):
+   - CONFIRMED BROKEN, FIXED: quote/page.tsx and contact/page.tsx were both POSTing to fetch("/")
+     (the page path) — the fleet-wide-confirmed silent-lead-loss bug. Fixed both to POST to
+     fetch("/__forms.html") instead (urlencoded body, form-name field). Added 3 fields to
+     public/__forms.html's quote form declaration that were missing (limitsNeeded,
+     currentlyHaveWC, additionalInsured).
+   - LEFT UNTOUCHED, still flagging for a decision (not queried, not called — per manager
+     instruction, no Netlify API/hooks work done this pass or planned): both forms also fire a
+     direct client-side fetch(WEBHOOK_URL) call before the Netlify-forms POST, per a code comment
+     citing "SSR Netlify form capture is unreliable." Did not touch this — it may currently be a
+     working lead-delivery channel and removing it is outside "fix only if trivial." This is now
+     doubly relevant since the site just moved from SSR/plugin-nextjs to static export, which
+     should make standard Netlify Forms capture reliable going forward — but confirming that, and
+     deciding whether the webhook fetch is now redundant, is a deploy-side decision for the
+     manager, not something I verified or acted on.
+   - grep WEBHOOK_URL in src/ = 4 hits (unchanged, deliberate, see above)
+   - grep fetch("/" (page-path bug) in src/ = 0 hits
+   - grep fetch("/__forms.html" in src/ = 2 hits (quote + contact, correct)
+   - Testimonials: homepage and 2 service pages (same-day-coverage, instant-certificates) have
+     named-reviewer testimonial sections. Pre-existing content, not touched — flagged, not removed,
+     since this is an insurance-classified site (different rules than trade sites) and deletion
+     wasn't clearly in the assigned scope.
+
+BUILD
+   Command: pnpm install && flock /tmp/site-build.lock node_modules/.bin/next build (binary
+   called directly, per instruction)
+   Next.js: 16.2.1 (Turbopack)
+   Build exit code: 0
+   out/ directory: present, confirmed populated (20 HTML pages + sitemap.xml + robots.txt +
+   __forms.html + images)
+
+FILES TOUCHED THIS PASS
+   public/images/hero.jpg (regenerated, final version), public/images/hero-old.jpg (preserved,
+   pre-session version), src/app/page.tsx (stats-bar padding structure), src/app/about/page.tsx
+   (stats-bar padding structure), src/app/contact/page.tsx (forms fix), src/app/quote/page.tsx
+   (forms fix), public/__forms.html (added 3 missing quote fields), next.config.ts (output:
+   "export"), netlify.toml (publish="out", removed plugin-nextjs block), src/app/sitemap.ts
+   (force-static), src/app/robots.ts (force-static)
+
+GIT: zero git commands run this pass. No deploys, no Netlify API/hooks calls (per manager
+instruction — that item from the prior report is withdrawn, not acted on).
+BLOCKERS: none for this pass's scope. Deploy is the manager's action, not mine.
