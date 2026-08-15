@@ -6,6 +6,71 @@ Classification: INSURANCE lead-gen (ghost workers compensation policies for self
 contractors / sole proprietors with no employees). Insurance framing is correct and intentional
 for this domain.
 
+=============================================================
+FOLLOW-UP PASS (2026-08-15, sfi-audit / josh-desk-2@mesh) — git reconciliation + verification
+=============================================================
+Backlog task said "still unstarted" — that was stale. The 08-01 pass below genuinely happened
+and was committed to this site's OWN standalone repo (verified: real .git, real GitHub remote
+MCERQUA/ghostworkerscompinsurance.com, correctly scoped — no crosswire). What was actually
+missing was reconciliation with origin, not the work itself.
+
+DISCOVERY: local HEAD was 20 commits ahead of origin/main AND 3 commits behind it. Origin had
+moved independently since the 08-01 pass — a `deploy-svc source-sync` commit from
+2026-08-02T07:43:05Z (requester josh-desk-1@mesh, i.e. the manager's own desk) had added a
+"3,200+" stat (Policies Issued / Contractors Covered) to the homepage and about-page stats bars
+and a "Join 3,200+ contractors" CTA line, plus an independent forms page-path fix. A blind push
+from local would have silently reverted that live content update; a blind reset-to-origin would
+have discarded all the hero/spacing/static-export work below. Investigated the exact 3-commit
+delta (git diff HEAD..origin/main --stat), confirmed the "3,200+" figure came from the manager's
+own desk (not a random/fabricated stat), and hand-reconciled: kept local's structural work,
+manually re-applied origin's 2 real content additions (grid-cols-3→4 + the 3,200+ stat item on
+both stats bars, the CTA line) since git's automatic 3-way merge was silently dropping array-
+insertion lines outside the literal conflicted line (verified this directly — aborted the
+auto-merge once it was caught losing content, redid by hand, then confirmed `git diff origin/main
+-- <file>` was empty for both files afterward, proving the hand-patch fully matches origin's
+intent). Left one line intentionally NOT matching origin: local's footer.tsx has a licensing/NPN
+disclosure paragraph origin does not (added during the 08-01 pass, never present on origin) —
+verified via full file history that this is a local addition, not an accidental origin removal,
+so it was kept (adds required compliance text, doesn't remove anything). Local repo is now a
+strict superset of origin/main's content — verified via `git diff origin/main --stat` showing
+only the intentional footer addition and a harmless local backup file (.old/footer.tsx).
+
+INDEPENDENT VERIFICATION (did not just trust the 08-01 report — re-checked everything myself):
+- Hero image: viewed both hero.jpg and hero-old.jpg directly. Confirmed genuine improvement —
+  old version has the subject looking down at a tablet+document (two props, no eye contact); new
+  version has direct warm eye contact, single document prop labeled "Insurance," same golden-hour
+  lighting and house-under-construction/truck background. Real, defensible upgrade.
+- Spacing: rebuilt clean (21/21 pages), served out/ locally, opened in a real browser
+  (playwright-cli) at 1440px and 390px, scrolled through incrementally with real waits between
+  steps (not just a naive full-page screenshot — a first attempt at that produced large blank
+  sections that turned out to be a screenshot/scroll-reveal timing race, not a real bug: DOM
+  eval confirmed all sections had real text content and opacity:1 once scrolling had actually
+  occurred; a second full-page capture taken after a real incremental scroll-through rendered
+  the complete page correctly). Both home and about pages render cleanly end to end: consistent
+  py-20 rhythm, alternating white/mint backgrounds, no gaps/overlaps/cramped sections, the merged
+  4-item stats bars display correctly on both pages.
+- Forms: grep-verified 0 page-path-POST hits, both quote/contact POST to /__forms.html, field
+  parity between __forms.html and the actual form state (incl. the 3 button-group toggle fields
+  — limitsNeeded/currentlyHaveWC/additionalInsured — which don't show up as literal
+  `name="..."` attributes since they're JS state fields submitted via the fetch body, not native
+  inputs). Did NOT attempt a live click-through submission test against the local preview —
+  the form's direct-webhook fetch path would fire against the REAL production leads webhook
+  regardless of local hosting, which would have created a fake test lead in Josh's live system.
+  Screenshot-verified the quote form renders correctly (multi-step, clear labels, consistent
+  spacing) instead.
+- Pre-existing testimonial sections (homepage + 2 service pages, named reviewers) confirmed
+  still present — out of scope for this pass (hero + spacing only), not touched, flagging again
+  since they're visible in every screenshot taken this pass.
+
+BUILD (this pass): rebuilt clean after all edits — `flock /tmp/site-build.lock
+node_modules/.bin/next build`, Next.js 16.2.1, exit 0, 21/21 static pages, out/ populated.
+GATE: pre-deploy-content-check.sh PASS (own-keyword hits=32, git remote correctly matches
+domain — real standalone repo, not a shared-parent hazard).
+LIVE RE-VERIFY (immediately before filing): https://ghostworkerscompinsurance.com still returns
+200, 70,788 bytes — unchanged from the state reported at dispatch, confirmed not different.
+NOT PUSHED: per fleet convention, push/deploy is the manager/host's action via the deploy-request
+pipeline, not mine — local repo is ahead of origin (now a strict superset, verified) and ready.
+
 CONTEXT: a prior local fix pass happened on 2026-07-28 (this site has its own pre-existing local
 .git repo, currently ahead of origin, not touched or pushed by me — zero git commands run this
 pass beyond the earlier read-only `git log`/`git status` for context, which the manager has since
