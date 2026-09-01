@@ -6,8 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Zap, Shield, Clock, CheckCircle, ArrowRight, Phone, Star,
-  FileText, ChevronDown, Users, Award, TrendingUp, AlertTriangle,
-} from "lucide-react";
+  FileText, ChevronDown, Users, Award, TrendingUp, AlertTriangle, Mail } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -53,7 +52,6 @@ export default function HomePage() {
     name: "GhostWorkersCompInsurance.com",
     description: "Fast ghost workers compensation insurance with instant quotes and same-day certificates.",
     url: "https://ghostworkerscompinsurance.com",
-    telephone: "844-967-5247",
     areaServed: "US",
     serviceType: ["Ghost Workers Compensation Insurance", "Employer Liability Insurance"],
   };
@@ -148,9 +146,9 @@ export default function HomePage() {
                     <Zap size={18} />
                     Get My Quote Now
                   </Link>
-                  <a href="tel:8449675247" className="btn-secondary text-base" style={{ justifyContent: "center" }}>
-                    <Phone size={18} />
-                    844-967-5247
+                  <a href="/contact" className="btn-secondary text-base" style={{ justifyContent: "center" }}>
+                    <Mail size={18} />
+                    Contact Us
                   </a>
                 </motion.div>
               </div>
@@ -548,9 +546,9 @@ export default function HomePage() {
                   <Zap size={18} />
                   Get Instant Quote
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  Call 844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </div>
             </motion.div>

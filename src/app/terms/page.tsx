@@ -60,7 +60,7 @@ export default function TermsPage() {
     },
     {
       title: "13. Contact Information",
-      content: "Questions about these Terms? Contact us at: legal@ghostworkerscompinsurance.com or call 844-967-5247. Contractors Choice Agency LLC, Licensed Insurance Agent.",
+      content: "Questions about these Terms? Contact us at: legal@ghostworkerscompinsurance.com. Contractors Choice Agency LLC, Licensed Insurance Agent.",
     },
   ];
 

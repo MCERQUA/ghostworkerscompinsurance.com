@@ -5,8 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Shield, CheckCircle, ArrowRight, Phone, ChevronDown, Zap,
-  FileText, AlertTriangle, ClipboardList, BookOpen, TrendingUp, Search, Archive,
-} from "lucide-react";
+  FileText, AlertTriangle, ClipboardList, BookOpen, TrendingUp, Search, Archive, Mail } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -192,9 +191,9 @@ export default function EmployerAuditDefensePage() {
                   <Zap size={18} />
                   Get Protected Today
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </motion.div>
             </div>
@@ -542,9 +541,9 @@ export default function EmployerAuditDefensePage() {
                   <Zap size={18} />
                   Get Instant Quote
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  Call 844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </div>
             </motion.div>

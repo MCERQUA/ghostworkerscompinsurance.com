@@ -95,7 +95,7 @@ const deliveryMethods = [
 ];
 
 const automationSteps = [
-  { step: "01", title: "Request Submitted", desc: "You or your GC submits a certificate request through our portal, by email, or by calling 844-967-5247." },
+  { step: "01", title: "Request Submitted", desc: "You or your GC submits a certificate request through our portal or by email." },
   { step: "02", title: "Policy Verified", desc: "Our system verifies your active policy, coverage dates, limits, and any endorsements required by the requesting party." },
   { step: "03", title: "Certificate Generated", desc: "An ACORD 25 form is auto-populated with your policy data and the certificate holder's information." },
   { step: "04", title: "Delivered Instantly", desc: "The PDF certificate is emailed to you and, optionally, directly to the certificate holder or additional insured. Usually within minutes." },
@@ -148,7 +148,7 @@ const faqs = [
   },
   {
     q: "My GC says my certificate expired — how do I get a new one?",
-    a: "If your policy renewed, contact us and we'll issue an updated certificate reflecting the new policy term immediately. If your policy has lapsed (expired without renewal), you'll need to renew your policy first — we can get you rebound same-day. Call 844-967-5247 or use our online renewal portal.",
+    a: "If your policy renewed, contact us and we'll issue an updated certificate reflecting the new policy term immediately. If your policy has lapsed (expired without renewal), you'll need to renew your policy first — we can get you rebound same-day. Use our online renewal portal or reach us through our contact page.",
   },
 ];
 
@@ -251,9 +251,9 @@ export default function InstantCertificatesPage() {
                   <Zap size={18} />
                   Get My Certificate Today
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </motion.div>
             </div>
@@ -675,9 +675,9 @@ export default function InstantCertificatesPage() {
                   <Zap size={18} />
                   Get Instant Certificate
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  Call 844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </div>
             </motion.div>

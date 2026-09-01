@@ -47,11 +47,11 @@ export default function Footer() {
               Start Free Quote
             </Link>
             <a
-              href="tel:8449675247"
+              href="/contact"
               className="inline-flex items-center justify-center gap-2 font-bold py-3 px-8 rounded-full border-2 border-white text-white transition-all"
             >
-              <Phone size={18} />
-              844-967-5247
+              <Mail size={18} />
+              Contact Us
             </a>
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function Footer() {
               <div className="flex flex-col gap-2 text-sm" style={{ color: "#86efac" }}>
                 <div className="flex items-center gap-2">
                   <Phone size={14} />
-                  <a href="tel:8449675247" className="hover:text-white transition-colors">844-967-5247</a>
+                  <a href="/contact" className="hover:text-white transition-colors">Contact Us</a>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail size={14} />

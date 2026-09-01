@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Zap, Shield, Clock, CheckCircle, Phone, ArrowRight } from "lucide-react";
+import { Zap, Shield, Clock, CheckCircle, Phone, ArrowRight, Mail } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -86,8 +86,8 @@ export default function QuotePage() {
               A licensed advisor will contact you within 1 business hour with your ghost WC quote.
               If you need immediate assistance, call us now.
             </p>
-            <a href="tel:8449675247" className="btn-primary mb-4 w-full justify-center">
-              <Phone size={18} /> Call 844-967-5247
+            <a href="/contact" className="btn-primary mb-4 w-full justify-center">
+              <Mail size={18} /> Contact Us
             </a>
             <Link href="/" className="btn-secondary w-full justify-center">Back to Home</Link>
           </motion.div>

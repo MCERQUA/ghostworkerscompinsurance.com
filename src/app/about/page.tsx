@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Shield, Award, Users, Clock, CheckCircle, Phone, Zap } from "lucide-react";
+import { Shield, Award, Users, Clock, CheckCircle, Phone, Zap, Mail } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -157,8 +157,8 @@ export default function AboutPage() {
               <Link href="/quote" className="btn-primary">
                 <Zap size={18} /> Get Instant Quote
               </Link>
-              <a href="tel:8449675247" className="btn-secondary">
-                <Phone size={18} /> 844-967-5247
+              <a href="/contact" className="btn-secondary">
+                <Mail size={18} /> Contact Us
               </a>
             </div>
           </div>

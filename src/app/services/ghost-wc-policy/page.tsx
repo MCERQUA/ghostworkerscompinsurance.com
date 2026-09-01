@@ -5,8 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Shield, CheckCircle, ArrowRight, Phone, ChevronDown,
-  FileText, MapPin, DollarSign, HelpCircle, Users, AlertTriangle, Zap,
-} from "lucide-react";
+  FileText, MapPin, DollarSign, HelpCircle, Users, AlertTriangle, Zap, Mail } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -91,7 +90,7 @@ const whyCCA = [
   { icon: <FileText size={20} />, title: "Ghost Policy Specialists", desc: "We focus exclusively on ghost WC — this isn't a sideline product for us." },
   { icon: <CheckCircle size={20} />, title: "Same-Day Certificates", desc: "Most certificates are delivered the same day you apply and pay." },
   { icon: <MapPin size={20} />, title: "47-State Coverage", desc: "Licensed to write ghost policies in all non-monopolistic states." },
-  { icon: <Phone size={20} />, title: "Dedicated Support", desc: "Real humans available at 844-967-5247 if you ever need help." },
+  { icon: <Phone size={20} />, title: "Dedicated Support", desc: "Real humans on our contact page if you ever need help." },
 ];
 
 const faqs = [
@@ -193,9 +192,9 @@ export default function GhostWCPolicyPage() {
                   <Zap size={18} />
                   Get an Instant Quote
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </motion.div>
             </div>
@@ -566,9 +565,9 @@ export default function GhostWCPolicyPage() {
                   <Zap size={18} />
                   Get Instant Quote
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  Call 844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </div>
             </motion.div>

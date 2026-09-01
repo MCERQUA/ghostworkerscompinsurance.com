@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Calendar, Clock, ArrowLeft, Tag, Zap, Phone } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Tag, Zap, Phone, Mail } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -119,8 +119,8 @@ export default async function BlogPostPage({
                   <Link href="/quote" className="btn-primary w-full justify-center text-sm mb-3">
                     Free Quote
                   </Link>
-                  <a href="tel:8449675247" className="flex items-center justify-center gap-1 text-sm font-semibold" style={{ color: "#16a34a" }}>
-                    <Phone size={13} /> 844-967-5247
+                  <a href="/contact" className="flex items-center justify-center gap-1 text-sm font-semibold" style={{ color: "#16a34a" }}>
+                    <Mail size={13} /> Contact Us
                   </a>
                 </div>
 

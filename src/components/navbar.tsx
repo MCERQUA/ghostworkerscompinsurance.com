@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Phone, Zap } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Zap, Mail } from "lucide-react";
 
 const services = [
   { href: "/services/ghost-wc-policy", label: "Ghost WC Policy" },
@@ -109,9 +109,9 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <a href="tel:8449675247" className="flex items-center gap-1 text-sm font-semibold" style={{ color: "#16a34a" }}>
-              <Phone size={14} />
-              844-967-5247
+            <a href="/contact" className="flex items-center gap-1 text-sm font-semibold" style={{ color: "#16a34a" }}>
+              <Mail size={14} />
+              Contact Us
             </a>
             <Link href="/quote" className="btn-primary text-sm" style={{ padding: "0.5rem 1.25rem" }}>
               Get Instant Quote

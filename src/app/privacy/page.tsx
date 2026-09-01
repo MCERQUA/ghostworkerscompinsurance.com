@@ -56,7 +56,7 @@ export default function PrivacyPage() {
     },
     {
       title: "12. Contact Us",
-      content: "For privacy-related questions or requests, please contact us at: privacy@ghostworkerscompinsurance.com or call 844-967-5247. Contractors Choice Agency LLC operates GhostWorkersCompInsurance.com.",
+      content: "For privacy-related questions or requests, please contact us at: privacy@ghostworkerscompinsurance.com. Contractors Choice Agency LLC operates GhostWorkersCompInsurance.com.",
     },
   ];
 

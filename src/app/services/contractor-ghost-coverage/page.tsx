@@ -5,8 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Users, CheckCircle, Phone, ChevronDown, Zap,
-  FileText, Shield, MapPin, Briefcase, AlertTriangle, HardHat, Award,
-} from "lucide-react";
+  FileText, Shield, MapPin, Briefcase, AlertTriangle, HardHat, Award, Mail } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -223,9 +222,9 @@ export default function ContractorGhostCoveragePage() {
                   <Zap size={18} />
                   Get Contractor Quote
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </motion.div>
             </div>
@@ -358,7 +357,7 @@ export default function ContractorGhostCoveragePage() {
             </div>
             <p className="text-center text-sm mt-8" style={{ color: "#9ca3af" }}>
               Rules for all 47 eligible states available on request. Call{" "}
-              <a href="tel:8449675247" style={{ color: "#16a34a" }}>844-967-5247</a> for state-specific guidance.
+              <a href="/contact" style={{ color: "#16a34a" }}>Contact Us</a> for state-specific guidance.
             </p>
           </div>
         </section>
@@ -516,9 +515,9 @@ export default function ContractorGhostCoveragePage() {
                   <Zap size={18} />
                   Get Instant Contractor Quote
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  Call 844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </div>
             </motion.div>

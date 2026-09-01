@@ -85,8 +85,7 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-bold mb-6" style={{ color: "#111827" }}>Get in Touch</h2>
                 <div className="flex flex-col gap-6 mb-8">
                   {[
-                    { icon: <Phone size={20} />, label: "Phone", value: "844-967-5247", href: "tel:8449675247" },
-                    { icon: <Mail size={20} />, label: "Email", value: "quotes@ghostworkerscompinsurance.com", href: "mailto:quotes@ghostworkerscompinsurance.com" },
+                                        { icon: <Mail size={20} />, label: "Email", value: "quotes@ghostworkerscompinsurance.com", href: "mailto:quotes@ghostworkerscompinsurance.com" },
                     { icon: <MapPin size={20} />, label: "Coverage Area", value: "All 47 eligible states", href: null },
                     { icon: <Clock size={20} />, label: "Hours", value: "Mon–Fri 8am–6pm CT", href: null },
                   ].map((item) => (

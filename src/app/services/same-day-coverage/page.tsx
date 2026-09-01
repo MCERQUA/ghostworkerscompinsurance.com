@@ -5,8 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Clock, CheckCircle, ArrowRight, Phone, ChevronDown, Zap,
-  FileText, Shield, Users, AlertCircle, Star, Timer,
-} from "lucide-react";
+  FileText, Shield, Users, AlertCircle, Star, Timer, Mail } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -106,7 +105,7 @@ const faqs = [
   },
   {
     q: "Do I need to call anyone to get same-day coverage?",
-    a: "No. Our process is fully online. Most applicants complete the application, pay, and receive their certificate without speaking to anyone. If you have questions or need help, our team is available at 844-967-5247.",
+    a: "No. Our process is fully online. Most applicants complete the application, pay, and receive their certificate without speaking to anyone. If you have questions or need help, our team is reachable through our contact page.",
   },
   {
     q: "What payment methods are accepted for same-day?",
@@ -214,9 +213,9 @@ export default function SameDayCoveragePage() {
                   <Zap size={18} />
                   Start My Same-Day Application
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </motion.div>
             </div>
@@ -333,7 +332,7 @@ export default function SameDayCoveragePage() {
                   <p className="text-sm" style={{ color: "#374151" }}>
                     <strong>Not sure if you qualify for same-day?</strong> Start your application
                     and our system will tell you immediately, or call{" "}
-                    <a href="tel:8449675247" className="font-semibold" style={{ color: "#16a34a" }}>844-967-5247</a>.
+                    <a href="/contact" className="font-semibold" style={{ color: "#16a34a" }}>Contact Us</a>.
                   </p>
                 </div>
               </motion.div>
@@ -527,9 +526,9 @@ export default function SameDayCoveragePage() {
                   <Zap size={18} />
                   Start Same-Day Application
                 </Link>
-                <a href="tel:8449675247" className="btn-secondary text-base">
-                  <Phone size={18} />
-                  Call 844-967-5247
+                <a href="/contact" className="btn-secondary text-base">
+                  <Mail size={18} />
+                  Contact Us
                 </a>
               </div>
             </motion.div>
