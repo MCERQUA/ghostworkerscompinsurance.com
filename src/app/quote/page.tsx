@@ -32,6 +32,7 @@ export default function QuotePage() {
     coverageStart: "", limitsNeeded: "100/500",
     currentlyHaveWC: "no", additionalInsured: "no",
     "bot-field": "",
+    streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyNumber: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "",
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
@@ -313,6 +314,105 @@ export default function QuotePage() {
                     ))}
                   </div>
                 </div>
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Business details</h3>
+                  <p className="text-xs mb-4" style={{ color: "#6b7280" }}>What the business does and how long it has been running.</p>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Year business started</label>
+                    <input type="text" name="yearBusinessStarted" value={form.yearBusinessStarted} onChange={(e) => set("yearBusinessStarted", e.target.value)} placeholder="2015" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Description of the business</label>
+                    <textarea name="businessDescription" rows={3} value={form.businessDescription} onChange={(e) => set("businessDescription", e.target.value)} placeholder="What the business does, day to day" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Annual gross sales</label>
+                    <input type="text" name="annualGrossSales" value={form.annualGrossSales} onChange={(e) => set("annualGrossSales", e.target.value)} placeholder="$1,200,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Residential vs commercial split</label>
+                    <input type="text" name="residentialVsCommercial" value={form.residentialVsCommercial} onChange={(e) => set("residentialVsCommercial", e.target.value)} placeholder="70% residential / 30% commercial" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>New vs existing construction</label>
+                    <input type="text" name="newVsExistingConstruction" value={form.newVsExistingConstruction} onChange={(e) => set("newVsExistingConstruction", e.target.value)} placeholder="Mostly existing structures" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Largest projects</label>
+                    <textarea name="largestProjects" rows={3} value={form.largestProjects} onChange={(e) => set("largestProjects", e.target.value)} placeholder="Three largest jobs in the last year — value and scope" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Business address</h3>
+                  <p className="text-xs mb-4" style={{ color: "#6b7280" }}>Where your operation is based.</p>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Street address</label>
+                    <input type="text" name="streetAddress" value={form.streetAddress} onChange={(e) => set("streetAddress", e.target.value)} placeholder="123 Main St, Suite 200" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>City</label>
+                    <input type="text" name="city" value={form.city} onChange={(e) => set("city", e.target.value)} placeholder="Phoenix" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>ZIP code</label>
+                    <input type="text" name="zip" value={form.zip} onChange={(e) => set("zip", e.target.value)} placeholder="85001" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Payroll and class codes</h3>
+                  <p className="text-xs mb-4" style={{ color: "#6b7280" }}>Employees, payroll and how the work is classified.</p>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Number of employees</label>
+                    <input type="text" name="numberOfEmployees" value={form.numberOfEmployees} onChange={(e) => set("numberOfEmployees", e.target.value)} placeholder="8" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Amount of payroll</label>
+                    <input type="text" name="amountOfPayroll" value={form.amountOfPayroll} onChange={(e) => set("amountOfPayroll", e.target.value)} placeholder="$420,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Class code 1</label>
+                    <input type="text" name="classCode1" value={form.classCode1} onChange={(e) => set("classCode1", e.target.value)} placeholder="5403" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Class code 2</label>
+                    <input type="text" name="classCode2" value={form.classCode2} onChange={(e) => set("classCode2", e.target.value)} placeholder="5645" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Class code 3</label>
+                    <input type="text" name="classCode3" value={form.classCode3} onChange={(e) => set("classCode3", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Class code 4</label>
+                    <input type="text" name="classCode4" value={form.classCode4} onChange={(e) => set("classCode4", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Class code 5</label>
+                    <input type="text" name="classCode5" value={form.classCode5} onChange={(e) => set("classCode5", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Office vs field split</label>
+                    <input type="text" name="officeVsFieldSplit" value={form.officeVsFieldSplit} onChange={(e) => set("officeVsFieldSplit", e.target.value)} placeholder="2 office / 6 field" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Any clerical staff?</label>
+                    <select name="hasClericalStaff" value={form.hasClericalStaff} onChange={(e) => set("hasClericalStaff", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }}><option value="">Select…</option><option value="Yes">Yes</option><option value="No">No</option></select>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Clerical staff — count and payroll</label>
+                    <input type="text" name="clericalStaffCount" value={form.clericalStaffCount} onChange={(e) => set("clericalStaffCount", e.target.value)} placeholder="2 clerical, $90,000 payroll" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Any outside sales staff?</label>
+                    <select name="hasSalesStaff" value={form.hasSalesStaff} onChange={(e) => set("hasSalesStaff", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }}><option value="">Select…</option><option value="Yes">Yes</option><option value="No">No</option></select>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Sales staff — count and payroll</label>
+                    <input type="text" name="salesStaffCount" value={form.salesStaffCount} onChange={(e) => set("salesStaffCount", e.target.value)} placeholder="1 outside sales, $60,000 payroll" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                </div>
+
                 <div className="flex gap-4">
                   <button type="button" onClick={() => setStep(1)} className="btn-secondary flex-1 justify-center">Back</button>
                   <button
@@ -404,6 +504,107 @@ export default function QuotePage() {
                       {item.text}
                     </div>
                   ))}
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Prior year</h3>
+                  <p className="text-xs mb-4" style={{ color: "#6b7280" }}>Your last completed 12 months. Best estimates are fine.</p>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Prior year gross sales</label>
+                    <input type="text" name="priorYearGrossSales" value={form.priorYearGrossSales} onChange={(e) => set("priorYearGrossSales", e.target.value)} placeholder="$1,200,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Prior year subcontractor expenses</label>
+                    <input type="text" name="priorYearSubcontractorExpenses" value={form.priorYearSubcontractorExpenses} onChange={(e) => set("priorYearSubcontractorExpenses", e.target.value)} placeholder="$250,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Prior year employee count</label>
+                    <input type="text" name="priorYearEmployeeCount" value={form.priorYearEmployeeCount} onChange={(e) => set("priorYearEmployeeCount", e.target.value)} placeholder="8" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Prior year employee payroll</label>
+                    <input type="text" name="priorYearEmployeePayroll" value={form.priorYearEmployeePayroll} onChange={(e) => set("priorYearEmployeePayroll", e.target.value)} placeholder="$400,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Next twelve months — estimates</h3>
+                  <p className="text-xs mb-4" style={{ color: "#6b7280" }}>Projected figures for the coming policy period.</p>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Estimated gross sales</label>
+                    <input type="text" name="estimatedGrossSales" value={form.estimatedGrossSales} onChange={(e) => set("estimatedGrossSales", e.target.value)} placeholder="$1,400,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Estimated subcontractor expenses</label>
+                    <input type="text" name="estimatedSubcontractorExpenses" value={form.estimatedSubcontractorExpenses} onChange={(e) => set("estimatedSubcontractorExpenses", e.target.value)} placeholder="$300,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Estimated employee count</label>
+                    <input type="text" name="estimatedEmployeeCount" value={form.estimatedEmployeeCount} onChange={(e) => set("estimatedEmployeeCount", e.target.value)} placeholder="10" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Estimated employee payroll</label>
+                    <input type="text" name="estimatedEmployeePayroll" value={form.estimatedEmployeePayroll} onChange={(e) => set("estimatedEmployeePayroll", e.target.value)} placeholder="$500,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Estimated material costs</label>
+                    <input type="text" name="estimatedMaterialCosts" value={form.estimatedMaterialCosts} onChange={(e) => set("estimatedMaterialCosts", e.target.value)} placeholder="$180,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Coverage needed</label>
+                    <textarea name="coverageTypes" rows={3} value={form.coverageTypes} onChange={(e) => set("coverageTypes", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Subcontractor insurance</h3>
+                  <p className="text-xs mb-4" style={{ color: "#6b7280" }}>How subcontracted work is covered.</p>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Do your subcontractors carry their own insurance?</label>
+                    <select name="subcontractorsHaveInsurance" value={form.subcontractorsHaveInsurance} onChange={(e) => set("subcontractorsHaveInsurance", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }}><option value="">Select…</option><option value="Yes">Yes</option><option value="No">No</option></select>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Percentage of subcontractors insured</label>
+                    <input type="text" name="percentSubcontractorsInsured" value={form.percentSubcontractorsInsured} onChange={(e) => set("percentSubcontractorsInsured", e.target.value)} placeholder="100" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Do you need coverage for uninsured subcontractors?</label>
+                    <select name="coverageForUninsuredSubcontractors" value={form.coverageForUninsuredSubcontractors} onChange={(e) => set("coverageForUninsuredSubcontractors", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }}><option value="">Select…</option><option value="Yes">Yes</option><option value="No">No</option></select>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Current or prior coverage</h3>
+                  <p className="text-xs mb-4" style={{ color: "#6b7280" }}>Who covers you today, if anyone.</p>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Current or prior carrier</label>
+                    <input type="text" name="priorCarrierName" value={form.priorCarrierName} onChange={(e) => set("priorCarrierName", e.target.value)} placeholder="Carrier name" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Policy number</label>
+                    <input type="text" name="priorPolicyNumber" value={form.priorPolicyNumber} onChange={(e) => set("priorPolicyNumber", e.target.value)} placeholder="Policy number" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Policy expiration date</label>
+                    <input type="date" name="priorPolicyExpiration" value={form.priorPolicyExpiration} onChange={(e) => set("priorPolicyExpiration", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Owners and officers</h3>
+                  <p className="text-xs mb-4" style={{ color: "#6b7280" }}>Each owner or officer to be included or excluded.</p>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Owners and officers</label>
+                    <textarea name="ownerNames" rows={3} value={form.ownerNames} onChange={(e) => set("ownerNames", e.target.value)} placeholder="One owner or officer per line, with role" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Owner date of birth</label>
+                    <input type="date" name="ownerDateOfBirth" value={form.ownerDateOfBirth} onChange={(e) => set("ownerDateOfBirth", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Ownership percentage</label>
+                    <input type="text" name="ownerOwnershipPct" value={form.ownerOwnershipPct} onChange={(e) => set("ownerOwnershipPct", e.target.value)} placeholder="100" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                  </div>
                 </div>
 
                 <div className="flex gap-4">
