@@ -422,39 +422,6 @@ export default function SameDayCoveragePage() {
           </div>
         </section>
 
-        {/* ── TESTIMONIAL ROW ── */}
-        <section className="py-20 bg-white">
-          <div className="container-wide">
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { name: "Raul M.", trade: "Plumbing Contractor, TX", review: "Got my certificate in 2 hours. The GC on my job was shocked it came through so fast. Will use again without hesitation.", stars: 5 },
-                { name: "Angela S.", trade: "Painting Sole Prop, FL", review: "Applied at 10 AM, had my COI emailed by noon. The whole process was smooth and I didn't have to call anyone.", stars: 5 },
-                { name: "David K.", trade: "Landscaping LLC, GA", review: "Same-day is no exaggeration. My certificate was in my inbox before I even finished watching TV that evening.", stars: 5 },
-              ].map((t, i) => (
-                <motion.div
-                  key={t.name}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i}
-                  className="rounded-2xl p-6 border"
-                  style={{ background: "#f0fdf4", borderColor: "#d1fae5" }}
-                >
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: t.stars }).map((_, j) => (
-                      <Star key={j} size={16} fill="#16a34a" color="#16a34a" />
-                    ))}
-                  </div>
-                  <p className="text-sm mb-4 italic" style={{ color: "#374151" }}>&ldquo;{t.review}&rdquo;</p>
-                  <div className="font-semibold text-sm" style={{ color: "#111827" }}>{t.name}</div>
-                  <div className="text-xs" style={{ color: "#6b7280" }}>{t.trade}</div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── FAQ ── */}
         <section className="py-20" style={{ background: "#f0fdf4" }}>
           <div className="container-wide max-w-3xl">

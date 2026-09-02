@@ -431,49 +431,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── TESTIMONIALS ── */}
-        <section className="py-20" style={{ background: "#f0fdf4" }}>
-          <div className="container-wide">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-14"
-            >
-              <h2 className="section-title mb-4">Contractors Trust Us</h2>
-            </motion.div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { name: "Marcus T.", trade: "Electrical Contractor, TX", review: "Got my ghost WC certificate in two hours. I was able to submit my contractor license application the same afternoon. Incredible service.", stars: 5 },
-                { name: "Diana R.", trade: "Landscaping Sole Prop, FL", review: "I didn't even know ghost policies existed until a friend told me. Got a quote in literally 90 seconds and paid online. Certificate was in my inbox before I even closed my browser.", stars: 5 },
-                { name: "Brendan K.", trade: "General Contractor, GA", review: "Price was lower than I expected and the process was painless. Will be recommending to every sub I work with.", stars: 5 },
-              ].map((t, i) => (
-                <motion.div
-                  key={t.name}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i}
-                  className="bg-white rounded-2xl p-6 shadow-sm border"
-                  style={{ borderColor: "#d1fae5" }}
-                >
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: t.stars }).map((_, j) => (
-                      <Star key={j} size={16} fill="#16a34a" color="#16a34a" />
-                    ))}
-                  </div>
-                  <p className="text-sm mb-4 italic" style={{ color: "#374151" }}>&ldquo;{t.review}&rdquo;</p>
-                  <div>
-                    <div className="font-semibold text-sm" style={{ color: "#111827" }}>{t.name}</div>
-                    <div className="text-xs" style={{ color: "#6b7280" }}>{t.trade}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── FAQ ── */}
         <section className="py-20 bg-white">
           <div className="container-wide max-w-3xl">

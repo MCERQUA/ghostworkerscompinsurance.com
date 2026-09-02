@@ -571,39 +571,6 @@ export default function InstantCertificatesPage() {
           </div>
         </section>
 
-        {/* ── TESTIMONIALS ── */}
-        <section className="py-20" style={{ background: "#f0fdf4" }}>
-          <div className="container-wide">
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { name: "Chris V.", trade: "Electrical Sub, NC", review: "My GC needed my COI by end of day or I would lose the contract. Ghost Workers Comp had it in my inbox in under 2 hours. Saved the job." },
-                { name: "Maria L.", trade: "Tile Installer, FL", review: "I can't believe how easy it was. I got my certificate within the same morning I applied. The GC was shocked it came through so fast." },
-                { name: "Tony B.", trade: "General Contractor, GA", review: "I require all my subs to send COIs before they step on site. These guys deliver same-day — which means my subs never delay my schedule." },
-              ].map((t, i) => (
-                <motion.div
-                  key={t.name}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={i}
-                  className="bg-white rounded-2xl p-6 border"
-                  style={{ borderColor: "#d1fae5" }}
-                >
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <Star key={j} size={16} fill="#16a34a" color="#16a34a" />
-                    ))}
-                  </div>
-                  <p className="text-sm mb-4 italic" style={{ color: "#374151" }}>&ldquo;{t.review}&rdquo;</p>
-                  <div className="font-semibold text-sm" style={{ color: "#111827" }}>{t.name}</div>
-                  <div className="text-xs" style={{ color: "#6b7280" }}>{t.trade}</div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── FAQ ── */}
         <section className="py-20 bg-white">
           <div className="container-wide max-w-3xl">
