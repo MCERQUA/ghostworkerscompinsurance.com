@@ -9,21 +9,25 @@ import Footer from "@/components/footer";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", "bot-field": "" });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // A lead is captured if a delivery channel ACCEPTED it. fetch() does not reject
+    // on a 4xx/5xx, so each response status has to be inspected explicitly.
+    let captured = false;
     if (form["bot-field"]) return;
     // Deliver lead directly to the leads webhook (SSR Netlify form capture is unreliable).
     try {
       const WEBHOOK_URL = `https://josh.jam-bot.com/social-api/api/leads/webhook/netlify?tenant=josh&site=ghostworkerscompinsurance.com`;
-      await fetch(WEBHOOK_URL, {
+      captured = (await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ form_name: "contact", source: "ghostworkerscompinsurance.com", ...form }),
-      });
+      })).ok || captured;
     } catch {
       // lead webhook failed — do not block submission UX
     }
@@ -31,13 +35,14 @@ export default function ContactPage() {
     params.append("form-name", "contact");
     Object.entries(form).forEach(([k, v]) => params.append(k, v));
     try {
-      await fetch("/__forms.html", {
+      captured = (await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: params.toString(),
-      });
+      })).ok || captured;
     } catch {}
-    setSubmitted(true);
+    setFailed(!captured);
+    setSubmitted(captured);
   };
 
   if (submitted) {
@@ -197,6 +202,14 @@ export default function ContactPage() {
                     <Shield size={16} style={{ color: "#16a34a" }} />
                     Your information is private and secure. We never sell your data.
                   </div>
+                  {failed && (
+                    <div role="alert" className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800">
+                      That did not send &mdash; your details are still here, nothing was lost. Please try
+                      again, or call us at{" "}
+                      <a href="tel:8449675247" className="font-semibold underline">844-967-5247</a>.
+                    </div>
+                  )}
+
                   <button type="submit" className="btn-primary w-full justify-center">
                     Send Message
                   </button>

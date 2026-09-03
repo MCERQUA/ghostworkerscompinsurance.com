@@ -26,6 +26,7 @@ const TRADES = [
 export default function QuotePage() {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [form, setForm] = useState({
     firstName: "", lastName: "", email: "", phone: "",
     businessName: "", state: "", trade: "", yearsInBusiness: "",
@@ -39,29 +40,36 @@ export default function QuotePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // A lead is captured if a delivery channel ACCEPTED it. fetch() does not reject
+    // on a 4xx/5xx, so each response status has to be inspected explicitly.
+    let captured = false;
+    // The leads DB promotes `name`/`full_name` only; this form collects the name in two
+    // halves, so send a joined `name` in the payload as well. The UI is unchanged.
+    const payload = { ...form, name: `${form.firstName} ${form.lastName}`.trim() };
     if (form["bot-field"]) return;
     // Deliver lead directly to the leads webhook (SSR Netlify form capture is unreliable).
     try {
       const WEBHOOK_URL = `https://josh.jam-bot.com/social-api/api/leads/webhook/netlify?tenant=josh&site=ghostworkerscompinsurance.com`;
-      await fetch(WEBHOOK_URL, {
+      captured = (await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ form_name: "quote", source: "ghostworkerscompinsurance.com", ...form }),
-      });
+        body: JSON.stringify({ form_name: "quote", source: "ghostworkerscompinsurance.com", ...payload }),
+      })).ok || captured;
     } catch {
       // lead webhook failed — do not block submission UX
     }
     const params = new URLSearchParams();
     params.append("form-name", "quote");
-    Object.entries(form).forEach(([k, v]) => params.append(k, v));
+    Object.entries(payload).forEach(([k, v]) => params.append(k, v));
     try {
-      await fetch("/__forms.html", {
+      captured = (await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: params.toString(),
-      });
+      })).ok || captured;
     } catch {}
-    setSubmitted(true);
+    setFailed(!captured);
+    setSubmitted(captured);
   };
 
   if (submitted) {
@@ -609,6 +617,14 @@ export default function QuotePage() {
 
                 <div className="flex gap-4">
                   <button type="button" onClick={() => setStep(2)} className="btn-secondary flex-1 justify-center">Back</button>
+                  {failed && (
+                    <div role="alert" className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800">
+                      That did not send &mdash; your details are still here, nothing was lost. Please try
+                      again, or call us at{" "}
+                      <a href="tel:8449675247" className="font-semibold underline">844-967-5247</a>.
+                    </div>
+                  )}
+
                   <button type="submit" className="btn-primary flex-1 justify-center">
                     <Zap size={18} /> Get My Quote
                   </button>
