@@ -6,6 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ghostworkerscompinsurance.com"),
+  alternates: { canonical: "/" },
   title: {
     default: "Ghost Workers Comp Insurance | Instant Coverage Online",
     template: "%s | GhostWorkersCompInsurance.com",
