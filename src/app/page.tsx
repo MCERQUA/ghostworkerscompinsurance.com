@@ -204,9 +204,8 @@ export default function HomePage() {
         {/* ── STATS BAR ── */}
         <section className="py-14" style={{ background: "#0f1f14" }}>
           <div className="container-wide">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
               {[
-                { value: "3,200+", label: "Policies Issued" },
                 { value: "47", label: "States Eligible" },
                 { value: "< 90s", label: "Avg Quote Time" },
                 { value: "Same Day", label: "Certificate Delivery" },
@@ -496,7 +495,7 @@ export default function HomePage() {
                 Your Ghost WC Certificate <span className="green-gradient-text">Awaits</span>
               </h2>
               <p className="text-lg mb-8 max-w-xl mx-auto" style={{ color: "#374151" }}>
-                Join 3,200+ contractors who got covered fast. Start your quote now — no obligation.
+                Get covered fast. Start your quote now — no obligation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/quote" className="btn-primary text-base">

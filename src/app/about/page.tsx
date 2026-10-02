@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Shield, Award, Users, Clock, CheckCircle, Phone, Zap, Mail } from "lucide-react";
+import { Shield, Award, Clock, CheckCircle, Phone, Zap, Mail } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -90,9 +90,8 @@ export default function AboutPage() {
         {/* Stats */}
         <section className="py-14" style={{ background: "#0f1f14" }}>
           <div className="container-wide">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
               {[
-                { value: "3,200+", label: "Contractors Covered", icon: <Users size={24} /> },
                 { value: "47", label: "States Licensed", icon: <Shield size={24} /> },
                 { value: "90 sec", label: "Avg Quote Time", icon: <Zap size={24} /> },
                 { value: "Same Day", label: "Certificate Delivery", icon: <Clock size={24} /> },
