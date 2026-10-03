@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Zap, Shield, Clock, CheckCircle, Phone, ArrowRight, Mail } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { OwnersFieldset } from "@/components/forms/OwnersFieldset";
 
 const STATES = [
   "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut",
@@ -24,6 +25,7 @@ const TRADES = [
 ];
 
 export default function QuotePage() {
+  const [ownerFields, setOwnerFields] = useState<Record<string, string>>({});
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -45,7 +47,7 @@ export default function QuotePage() {
     let captured = false;
     // The leads DB promotes `name`/`full_name` only; this form collects the name in two
     // halves, so send a joined `name` in the payload as well. The UI is unchanged.
-    const payload = { ...form, name: `${form.firstName} ${form.lastName}`.trim() };
+    const payload = { ...form, ...ownerFields, name: `${form.firstName} ${form.lastName}`.trim() };
     if (form["bot-field"]) return;
     // Deliver lead directly to the leads webhook (SSR Netlify form capture is unreliable).
     try {
@@ -601,18 +603,15 @@ export default function QuotePage() {
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
                   <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Owners and officers</h3>
                   <p className="text-xs mb-4" style={{ color: "#6b7280" }}>Each owner or officer to be included or excluded.</p>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Owners and officers</label>
-                    <textarea name="ownerNames" rows={3} value={form.ownerNames} onChange={(e) => set("ownerNames", e.target.value)} placeholder="One owner or officer per line, with role" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Owner date of birth</label>
-                    <input type="date" name="ownerDateOfBirth" value={form.ownerDateOfBirth} onChange={(e) => set("ownerDateOfBirth", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Ownership percentage</label>
-                    <input type="text" name="ownerOwnershipPct" value={form.ownerOwnershipPct} onChange={(e) => set("ownerOwnershipPct", e.target.value)} placeholder="100" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
-                  </div>
+                  <OwnersFieldset
+                    inputClass="w-full px-4 py-3 rounded-xl border border-[#d1fae5] text-sm text-[#111827] focus:outline-none focus:ring-2 focus:ring-[#16a34a]/30"
+                    labelClass="block text-sm font-medium mb-2 text-[#374151]"
+                    buttonClass="btn-secondary min-h-[44px]"
+                    accentTextClass="text-[#16a34a]"
+                    mutedTextClass="text-[#6b7280]"
+                    borderClass="border-[#d1fae5]"
+                    onFieldsChange={setOwnerFields}
+                  />
                 </div>
 
                 <div className="flex gap-4">
