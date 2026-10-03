@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Zap, Shield, Clock, CheckCircle, Phone, ArrowRight, Mail } from "lucide-react";
@@ -39,6 +39,44 @@ export default function QuotePage() {
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
+  const formRef = useRef<HTMLFormElement>(null);
+  const [stepError, setStepError] = useState("");
+
+  // The visible field values are the source of truth for "can I continue?". Text typed before
+  // React hydrates, and autofill that sets .value without input events, are on screen but not in
+  // state - a state-only check left Continue disabled with every field visibly filled (lead lost).
+  const readDom = (names: string[]) => {
+    const els = formRef.current?.elements;
+    const found: Record<string, string> = {};
+    names.forEach((n) => {
+      const el = els?.namedItem(n) as HTMLInputElement | HTMLSelectElement | null;
+      if (el && "value" in el) found[n] = el.value.trim();
+    });
+    return found;
+  };
+  const LABELS: Record<string, string> = {
+    firstName: "first name", lastName: "last name", email: "email", phone: "phone",
+    businessName: "business name", state: "state", trade: "trade",
+  };
+  const advance = (names: string[], next: number) => {
+    const dom = readDom(names);
+    setForm((f) => ({ ...f, ...Object.fromEntries(Object.entries(dom).filter(([, v]) => v)) }));
+    const missing = names.filter((n) => !dom[n] && !String((form as Record<string, string>)[n] || "").trim());
+    if (missing.length) {
+      setStepError(`Please add your ${missing.map((n) => LABELS[n] || n).join(", ")} to continue.`);
+      (formRef.current?.elements.namedItem(missing[0]) as HTMLElement | null)?.focus();
+      return;
+    }
+    setStepError("");
+    setStep(next);
+  };
+  // Pick up anything typed or autofilled before hydration, once React is live.
+  useEffect(() => {
+    const dom = readDom(["firstName", "lastName", "email", "phone"]);
+    const filled = Object.fromEntries(Object.entries(dom).filter(([, v]) => v));
+    if (Object.keys(filled).length) setForm((f) => ({ ...f, ...filled }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -155,6 +193,7 @@ export default function QuotePage() {
         {/* Form */}
         <div className="container-wide max-w-2xl pb-20">
           <form
+            ref={formRef}
             data-netlify="true"
             name="quote"
             method="POST"
@@ -231,8 +270,7 @@ export default function QuotePage() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setStep(2)}
-                  disabled={!form.firstName || !form.lastName || !form.email || !form.phone}
+                  onClick={() => advance(["firstName", "lastName", "email", "phone"], 2)}
                   className="btn-primary w-full justify-center"
                 >
                   Continue <ArrowRight size={18} />
@@ -424,17 +462,22 @@ export default function QuotePage() {
                 </div>
 
                 <div className="flex gap-4">
-                  <button type="button" onClick={() => setStep(1)} className="btn-secondary flex-1 justify-center">Back</button>
+                  <button type="button" onClick={() => { setStepError(""); setStep(1); }} className="btn-secondary flex-1 justify-center">Back</button>
                   <button
                     type="button"
-                    onClick={() => setStep(3)}
-                    disabled={!form.businessName || !form.state || !form.trade}
+                    onClick={() => advance(["businessName", "state", "trade"], 3)}
                     className="btn-primary flex-1 justify-center"
                   >
                     Continue <ArrowRight size={18} />
                   </button>
                 </div>
               </motion.div>
+            )}
+
+            {stepError && (
+              <p role="alert" className="mt-4 rounded-xl border px-4 py-3 text-sm" style={{ borderColor: "#fcd34d", background: "#fffbeb", color: "#92400e" }}>
+                {stepError}
+              </p>
             )}
 
             {/* Step 3 */}
