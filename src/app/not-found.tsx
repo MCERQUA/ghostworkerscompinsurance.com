@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Search } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -7,7 +8,7 @@ export default function NotFound() {
         className="w-20 h-20 rounded-full flex items-center justify-center mb-6"
         style={{ background: "#dcfce7" }}
       >
-        <span style={{ fontSize: "2rem" }}>🔍</span>
+        <Search className="w-8 h-8" style={{ color: "#15803d" }} aria-hidden="true" />
       </div>
       <h1 className="text-4xl font-extrabold mb-3" style={{ color: "#111827" }}>
         Page Not Found

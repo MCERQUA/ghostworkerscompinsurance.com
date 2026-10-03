@@ -5,7 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Users, CheckCircle, Phone, ChevronDown, Zap,
-  FileText, Shield, MapPin, Briefcase, AlertTriangle, HardHat, Award, Mail } from "lucide-react";
+  FileText, Shield, MapPin, Briefcase, AlertTriangle, HardHat, Award, Mail,
+  TreePalm, Star, Sun, Mountain } from "lucide-react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -77,31 +78,31 @@ const entityTypes = [
 const stateRules = [
   {
     state: "Florida (FL)",
-    flag: "🌴",
+    icon: TreePalm,
     rule: "Sole proprietors and partners are automatically exempt from WC. To formally exclude yourself and get a certificate, you must file a Notice of Election of Exemption with the Florida Division of Workers' Compensation. LLC members with ≤10% ownership cannot be excluded.",
     link: "DWC Form 250.201",
   },
   {
     state: "Texas (TX)",
-    flag: "⭐",
+    icon: Star,
     rule: "Texas is unique — WC is not mandatory for most private employers. Employers can be 'non-subscribers.' However, contractors working on public projects or for GCs that require WC must carry coverage. Ghost policies are widely used in TX to satisfy these contractual requirements.",
     link: "No state form required",
   },
   {
     state: "California (CA)",
-    flag: "☀️",
+    icon: Sun,
     rule: "All employers must carry WC in California. Sole proprietors and partners are excluded by statute, but must carry coverage if performing work requiring a contractor's license. Ghost policies are used when the license requires proof of WC but the owner has no employees.",
     link: "CSLB requires WC for license",
   },
   {
     state: "North Carolina (NC)",
-    flag: "🏔️",
+    icon: Mountain,
     rule: "WC is required for businesses with 3 or more employees. Sole proprietors, LLC members, and partners are excluded by default. Many contractors purchase ghost policies voluntarily because GCs in NC increasingly require WC certs from all subs.",
     link: "NC DOL WC Division",
   },
   {
     state: "Georgia (GA)",
-    flag: "🍑",
+    icon: MapPin,
     rule: "WC is required for businesses with 3+ employees. Sole proprietors and partners are exempt but can elect to be covered. Ghost policies satisfy GC requirements and are commonly used in the Atlanta metro construction market.",
     link: "State Board of Workers' Comp",
   },
@@ -345,7 +346,7 @@ export default function ContractorGhostCoveragePage() {
                   style={{ background: "#f0fdf4", borderColor: "#d1fae5" }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-2xl">{state.flag}</span>
+                    <state.icon className="w-6 h-6 flex-shrink-0" style={{ color: "#15803d" }} aria-hidden="true" />
                     <h3 className="font-bold text-lg" style={{ color: "#111827" }}>{state.state}</h3>
                     <span className="ml-auto text-xs px-3 py-1 rounded-full font-medium" style={{ background: "#dcfce7", color: "#15803d" }}>
                       {state.link}
