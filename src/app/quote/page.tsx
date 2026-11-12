@@ -35,7 +35,7 @@ export default function QuotePage() {
     coverageStart: "", limitsNeeded: "100/500",
     currentlyHaveWC: "no", additionalInsured: "no",
     "bot-field": "",
-    streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyNumber: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "",
+    streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyNumber: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "", certificateHolderName: "", certificateHolderAddress: "",
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
@@ -544,6 +544,28 @@ export default function QuotePage() {
                     ))}
                   </div>
                 </div>
+
+                {/* Certificate Holder: same-day-coverage, contractor-ghost-coverage and
+                    instant-certificates service pages all tell the applicant to enter the GC's/
+                    project owner's name and address here so they get listed on the COI, but no
+                    field ever existed to collect it (desk-2 capture-completeness check,
+                    2026-11-12). Shown whenever an additional insured / certificate holder is
+                    wanted so the promised data actually reaches the lead record. */}
+                {form.additionalInsured === "yes" && (
+                  <div className="mb-8">
+                    <p className="text-xs mb-3" style={{ color: "#6b7280" }}>
+                      Who should be listed as the certificate holder (the GC or project owner who needs a copy of your COI)?
+                    </p>
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Certificate holder name</label>
+                      <input type="text" name="certificateHolderName" value={form.certificateHolderName} onChange={(e) => set("certificateHolderName", e.target.value)} placeholder="ABC General Contracting LLC" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                    </div>
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Certificate holder address</label>
+                      <input type="text" name="certificateHolderAddress" value={form.certificateHolderAddress} onChange={(e) => set("certificateHolderAddress", e.target.value)} placeholder="123 Main St, Suite 200, Phoenix, AZ 85001" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                    </div>
+                  </div>
+                )}
 
                 {/* Trust reminder */}
                 <div className="flex flex-col gap-2 mb-6 p-4 rounded-xl" style={{ background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
