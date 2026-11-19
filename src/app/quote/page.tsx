@@ -36,10 +36,47 @@ export default function QuotePage() {
     currentlyHaveWC: "no", additionalInsured: "no",
     "bot-field": "",
     streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyNumber: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "", certificateHolderName: "", certificateHolderAddress: "",
+    dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "",
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
   const formRef = useRef<HTMLFormElement>(null);
+
+  // ACORD intake helpers (all optional). Called as plain functions, not components, so inputs keep focus.
+  const fieldStyle = { borderColor: "#d1fae5", color: "#111827" };
+  const fieldCls = "w-full px-4 py-3 rounded-xl border text-sm focus:outline-none";
+  const fv = (k: string) => (form as Record<string, string>)[k] || "";
+  const txt = (name: string, label: string, placeholder = "", type = "text") => (
+    <div className="mb-4" key={name}>
+      <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>{label}</label>
+      <input type={type} name={name} value={fv(name)} onChange={(e) => set(name, e.target.value)} placeholder={placeholder} className={fieldCls} style={fieldStyle} />
+    </div>
+  );
+  const area = (name: string, label: string, placeholder = "") => (
+    <div className="mb-4" key={name}>
+      <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>{label}</label>
+      <textarea name={name} rows={3} value={fv(name)} onChange={(e) => set(name, e.target.value)} placeholder={placeholder} className={fieldCls} style={fieldStyle} />
+    </div>
+  );
+  const yn = (name: string, label: string, opts: string[] = ["Yes", "No"]) => (
+    <div className="mb-4" key={name}>
+      <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>{label}</label>
+      <div className="flex gap-6">
+        {opts.map((o) => (
+          <label key={o} className="flex items-center gap-2 text-sm" style={{ color: "#374151" }}>
+            <input type="radio" name={name} value={o} checked={fv(name) === o} onChange={() => set(name, o)} />
+            {o}
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+  const groupHead = (title: string, note: string) => (
+    <>
+      <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>{title}</h3>
+      <p className="text-xs mb-4" style={{ color: "#6b7280" }}>{note}</p>
+    </>
+  );
   const [stepError, setStepError] = useState("");
 
   // The visible field values are the source of truth for "can I continue?". Text typed before
@@ -363,6 +400,21 @@ export default function QuotePage() {
                   </div>
                 </div>
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  {groupHead("Business identification", "Optional. Helps us prepare your application faster.")}
+                  {txt("dba", "Doing business as (DBA), if different", "Trade name")}
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Entity type</label>
+                    <select name="entityType" value={form.entityType} onChange={(e) => set("entityType", e.target.value)} className={fieldCls} style={fieldStyle}>
+                      <option value="">Select entity type</option>
+                      {["Sole proprietor", "Partnership", "LLC", "Corporation", "S-Corporation", "Joint venture", "Other"].map((t) => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                  </div>
+                  {form.entityType === "Other" && txt("entityTypeOther", "Entity type, other", "Describe")}
+                  {txt("fein", "FEIN (business tax ID, not an SSN)", "12-3456789")}
+                  {txt("experienceMod", "Experience mod, if you know it", "1.00")}
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
                   <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Business details</h3>
                   <p className="text-xs mb-4" style={{ color: "#6b7280" }}>What the business does and how long it has been running.</p>
                   <div className="mb-4">
@@ -406,6 +458,16 @@ export default function QuotePage() {
                     <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>ZIP code</label>
                     <input type="text" name="zip" value={form.zip} onChange={(e) => set("zip", e.target.value)} placeholder="85001" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
                   </div>
+                  {txt("physicalCounty", "County")}
+                  {yn("mailingSameAsPhysical", "Is your mailing address the same as this address?")}
+                  {form.mailingSameAsPhysical === "No" && (
+                    <>
+                      {txt("mailingAddress", "Mailing address", "PO Box 100")}
+                      {txt("mailingCity", "Mailing city")}
+                      {txt("mailingState", "Mailing state")}
+                      {txt("mailingZip", "Mailing ZIP")}
+                    </>
+                  )}
                 </div>
 
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
@@ -439,6 +501,9 @@ export default function QuotePage() {
                     <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Class code 5</label>
                     <input type="text" name="classCode5" value={form.classCode5} onChange={(e) => set("classCode5", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
                   </div>
+                  {txt("fullTimeEmployees", "Full-time employees", "6")}
+                  {txt("partTimeEmployees", "Part-time employees", "2")}
+                  {[1, 2, 3, 4, 5].map((n) => txt(`classPayroll${n}`, `Payroll for class code ${n}`, "$"))}
                   <div className="mb-4">
                     <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Office vs field split</label>
                     <input type="text" name="officeVsFieldSplit" value={form.officeVsFieldSplit} onChange={(e) => set("officeVsFieldSplit", e.target.value)} placeholder="2 office / 6 field" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
@@ -564,6 +629,7 @@ export default function QuotePage() {
                       <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Certificate holder address</label>
                       <input type="text" name="certificateHolderAddress" value={form.certificateHolderAddress} onChange={(e) => set("certificateHolderAddress", e.target.value)} placeholder="123 Main St, Suite 200, Phoenix, AZ 85001" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
                     </div>
+                    {area("additionalInsuredName", "Additional insured name(s), if different from the certificate holder")}
                   </div>
                 )}
 
@@ -634,6 +700,9 @@ export default function QuotePage() {
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
                   <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Subcontractor insurance</h3>
                   <p className="text-xs mb-4" style={{ color: "#6b7280" }}>How subcontracted work is covered.</p>
+                  {yn("usesSubcontractors", "Do you use subcontractors?")}
+                  {txt("percentSubcontracted", "Percent of work subcontracted", "25")}
+                  {yn("subsProvideCOI", "Do your subcontractors provide certificates of insurance?")}
                   <div className="mb-4">
                     <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Do your subcontractors carry their own insurance?</label>
                     <select name="subcontractorsHaveInsurance" value={form.subcontractorsHaveInsurance} onChange={(e) => set("subcontractorsHaveInsurance", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }}><option value="">Select…</option><option value="Yes">Yes</option><option value="No">No</option></select>
@@ -663,6 +732,25 @@ export default function QuotePage() {
                     <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Policy expiration date</label>
                     <input type="date" name="priorPolicyExpiration" value={form.priorPolicyExpiration} onChange={(e) => set("priorPolicyExpiration", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
                   </div>
+                  {yn("coverageTerminated", "Has any workers comp coverage been cancelled or non-renewed in the past 3 years?")}
+                  {yn("carrierNonRenewing", "Is your current carrier non-renewing you?")}
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  {groupHead("Loss history", "Optional. Claims in the last 3 years. Do not include claimant names or medical details.")}
+                  {yn("lossesLast3Years", "Any workers comp losses or claims in the last 3 years?")}
+                  {form.lossesLast3Years === "Yes" && (
+                    <>
+                      {txt("lossCount", "Number of claims", "1")}
+                      {txt("lossDate", "Date of the most recent loss", "", "date")}
+                      {txt("lossLineOfBusiness", "Line of business", "Workers compensation")}
+                      {area("lossDescription", "Brief description of what happened")}
+                      {txt("lossAmountPaid", "Amount paid", "$")}
+                      {txt("lossAmountReserved", "Amount reserved", "$")}
+                      {yn("lossHistoryStatus", "Claim status", ["Open", "Closed"])}
+                      {area("lossAdditional", "Anything else about your loss history")}
+                    </>
+                  )}
                 </div>
 
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
