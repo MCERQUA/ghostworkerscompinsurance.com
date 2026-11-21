@@ -20,6 +20,7 @@ interface OwnerRow {
   classCode: string;
   payroll: string;
   duties: string;
+  title: string;
 }
 
 interface OwnersFieldsetProps {
@@ -39,7 +40,7 @@ interface OwnersFieldsetProps {
 
 const fieldNames = (i: number) =>
   i === 0
-    ? { name: "ownerNames", dob: "ownerDateOfBirth", pct: "ownerOwnershipPct", incl: "ownerIncludedExcluded", classCode: "ownerClassCode", payroll: "ownerPayroll", duties: "ownerDuties" }
+    ? { name: "ownerNames", dob: "ownerDateOfBirth", pct: "ownerOwnershipPct", incl: "ownerIncludedExcluded", classCode: "ownerClassCode", payroll: "ownerPayroll", duties: "ownerDuties", title: "ownerTitleRelationship1" }
     : {
         name: `ownerName${i + 1}`,
         dob: `ownerDateOfBirth${i + 1}`,
@@ -48,8 +49,9 @@ const fieldNames = (i: number) =>
         classCode: `ownerClassCode${i + 1}`,
         payroll: `ownerPayroll${i + 1}`,
         duties: `ownerDuties${i + 1}`,
+        title: `ownerTitleRelationship${i + 1}`,
       };
-const BLANK_ROW: OwnerRow = { name: "", dob: "", pct: "", incl: "", classCode: "", payroll: "", duties: "" };
+const BLANK_ROW: OwnerRow = { name: "", dob: "", pct: "", incl: "", classCode: "", payroll: "", duties: "", title: "" };
 
 export function OwnersFieldset({
   inputClass,
@@ -88,6 +90,8 @@ export function OwnersFieldset({
       fields[n.classCode] = o.classCode;
       fields[n.payroll] = o.payroll;
       fields[n.duties] = o.duties;
+      fields[n.title] = o.title;
+      if (i === 0) fields.ownerName1 = o.name; // alias of ownerNames (host ruling 234)
     });
     onFieldsChange(fields);
   }, [owners, count, summary, onFieldsChange]);
@@ -191,6 +195,7 @@ export function OwnersFieldset({
                 placeholder="Full name and role"
                 className={inputClass}
               />
+              {i === 0 && <input type="hidden" name="ownerName1" value={o.name} />}
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
@@ -266,6 +271,19 @@ export function OwnersFieldset({
                   maxLength={136}
                   value={o.duties}
                   onChange={(e) => update(i, "duties", e.target.value)}
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label htmlFor={id("title")} className={labelClass}>Title or relationship (optional)</label>
+                <input
+                  id={id("title")}
+                  name={n.title}
+                  type="text"
+                  maxLength={80}
+                  value={o.title}
+                  onChange={(e) => update(i, "title", e.target.value)}
+                  placeholder="e.g. President, spouse"
                   className={inputClass}
                 />
               </div>
