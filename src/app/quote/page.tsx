@@ -36,7 +36,7 @@ export default function QuotePage() {
     currentlyHaveWC: "no", additionalInsured: "no",
     "bot-field": "",
     streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "", certificateHolderName: "", certificateHolderAddress: "",
-    dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "",
+    dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "", coverageTerminatedExplanation: "", carrierNonRenewingExplanation: "", applicantSignature: "", signatureDate: "",
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
@@ -124,6 +124,12 @@ export default function QuotePage() {
     // halves, so send a joined `name` in the payload as well. The UI is unchanged.
     const payload = { ...form, ...ownerFields, name: `${form.firstName} ${form.lastName}`.trim() };
     if (form["bot-field"]) return;
+    // Signature date must be today (+/- 1 day so a US evening, already tomorrow in UTC, still passes).
+    const sigMs = Date.parse(`${form.signatureDate}T00:00:00Z`);
+    if (!form.applicantSignature.trim() || Number.isNaN(sigMs) || Math.abs(sigMs - Date.parse(new Date().toISOString().slice(0, 10) + "T00:00:00Z")) > 86400000) {
+      setStepError("Please type your full name as your signature and enter today's date.");
+      return;
+    }
     // Deliver lead directly to the leads webhook (SSR Netlify form capture is unreliable).
     try {
       const WEBHOOK_URL = `https://josh.jam-bot.com/social-api/api/leads/webhook/netlify?tenant=josh&site=ghostworkerscompinsurance.com`;
@@ -729,7 +735,9 @@ export default function QuotePage() {
                     <input type="date" name="priorPolicyExpiration" value={form.priorPolicyExpiration} onChange={(e) => set("priorPolicyExpiration", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
                   </div>
                   {yn("coverageTerminated", "Has any workers comp coverage been cancelled or non-renewed in the past 3 years?")}
+                  {form.coverageTerminated === "Yes" && area("coverageTerminatedExplanation", "Please explain: which carrier, when, and why", "")}
                   {yn("carrierNonRenewing", "Is your current carrier non-renewing you?")}
+                  {form.carrierNonRenewing === "Yes" && area("carrierNonRenewingExplanation", "Please explain: what reason did the carrier give?", "")}
                 </div>
 
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
@@ -761,6 +769,18 @@ export default function QuotePage() {
                     borderClass="border-[#d1fae5]"
                     onFieldsChange={setOwnerFields}
                   />
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  {groupHead("Signature", "Type your full legal name as your electronic signature and enter today's date.")}
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Applicant signature (type your full legal name)</label>
+                    <input type="text" name="applicantSignature" required maxLength={80} autoComplete="off" value={form.applicantSignature} onChange={(e) => set("applicantSignature", e.target.value)} className={fieldCls} style={fieldStyle} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Signature date (today)</label>
+                    <input type="date" name="signatureDate" required value={form.signatureDate} onChange={(e) => set("signatureDate", e.target.value)} className={fieldCls} style={fieldStyle} />
+                  </div>
                 </div>
 
                 <div className="flex gap-4">
