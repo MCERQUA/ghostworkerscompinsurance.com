@@ -35,9 +35,9 @@ export default function QuotePage() {
     coverageStart: "", limitsNeeded: "100/500",
     currentlyHaveWC: "no", additionalInsured: "no",
     "bot-field": "",
-    priorExperienceMod: "", applicantInitials: "", priorYear2Year: "", priorYear2Carrier: "", priorYear2Premium: "", priorYear2Mod: "", priorYear2ClaimCount: "", priorYear2Paid: "", priorYear2Reserved: "", priorYear3Year: "", priorYear3Carrier: "", priorYear3Premium: "", priorYear3Mod: "", priorYear3ClaimCount: "", priorYear3Paid: "", priorYear3Reserved: "", priorYear4Year: "", priorYear4Carrier: "", priorYear4Premium: "", priorYear4Mod: "", priorYear4ClaimCount: "", priorYear4Paid: "", priorYear4Reserved: "", priorYear5Year: "", priorYear5Carrier: "", priorYear5Premium: "", priorYear5Mod: "", priorYear5ClaimCount: "", priorYear5Paid: "", priorYear5Reserved: "",
+    priorExperienceMod: "", priorYear2Year: "", priorYear2Carrier: "", priorYear2Premium: "", priorYear2Mod: "", priorYear2ClaimCount: "", priorYear2Paid: "", priorYear2Reserved: "", priorYear3Year: "", priorYear3Carrier: "", priorYear3Premium: "", priorYear3Mod: "", priorYear3ClaimCount: "", priorYear3Paid: "", priorYear3Reserved: "", priorYear4Year: "", priorYear4Carrier: "", priorYear4Premium: "", priorYear4Mod: "", priorYear4ClaimCount: "", priorYear4Paid: "", priorYear4Reserved: "", priorYear5Year: "", priorYear5Carrier: "", priorYear5Premium: "", priorYear5Mod: "", priorYear5ClaimCount: "", priorYear5Paid: "", priorYear5Reserved: "",
     streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "", certificateHolderName: "", certificateHolderAddress: "",
-    dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "", coverageTerminatedExplanation: "", carrierNonRenewingExplanation: "", applicantSignature: "", signatureDate: "",
+    dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "", coverageTerminatedExplanation: "", carrierNonRenewingExplanation: "", 
     businessWebsite: "", secondaryPhone: "", sicCode: "", naicsCode: "", ncciRiskId: "", inspectionContactName: "", inspectionContactPhone: "", accountingContactName: "", accountingContactPhone: "", claimContactName: "", claimContactPhone: "", employersLiabilityLimit: "", priorPremium: "", yn_foreignCoverage: "", yn_voluntaryComp: "", yn_uslh: "", yn_aircraftWatercraft: "", ynExplain_aircraftWatercraft: "", yn_hazardousMaterial: "", ynExplain_hazardousMaterial: "", yn_undergroundOrHeights: "", ynExplain_undergroundOrHeights: "", yn_overWaterWork: "", ynExplain_overWaterWork: "", yn_otherBusiness: "", ynExplain_otherBusiness: "", yn_subletWithoutCOI: "", ynExplain_subletWithoutCOI: "", yn_safetyProgram: "", ynExplain_safetyProgram: "", yn_groupTransportation: "", ynExplain_groupTransportation: "", yn_minorsOrSeniors: "", ynExplain_minorsOrSeniors: "", yn_seasonalEmployees: "", ynExplain_seasonalEmployees: "", yn_volunteerLabor: "", ynExplain_volunteerLabor: "", yn_physicalHandicaps: "", ynExplain_physicalHandicaps: "", yn_outOfStateTravel: "", ynExplain_outOfStateTravel: "", yn_athleticTeams: "", ynExplain_athleticTeams: "", yn_physicalsRequired: "", ynExplain_physicalsRequired: "", yn_otherInsuranceWithCarrier: "", ynExplain_otherInsuranceWithCarrier: "", yn_employeeHealthPlan: "", ynExplain_employeeHealthPlan: "", yn_employeesOtherBusinesses: "", ynExplain_employeesOtherBusinesses: "", yn_leasedEmployees: "", ynExplain_leasedEmployees: "", yn_workFromHome: "", ynExplain_workFromHome: "", yn_taxLiensBankruptcy: "", ynExplain_taxLiensBankruptcy: "", yn_unpaidWCPremium: "", ynExplain_unpaidWCPremium: "",
   });
 
@@ -126,23 +126,20 @@ export default function QuotePage() {
     // halves, so send a joined `name` in the payload as well. The UI is unchanged.
     const payload = { ...form, ...ownerFields, name: `${form.firstName} ${form.lastName}`.trim() };
     if (form["bot-field"]) return;
-    // Signature date must be today (+/- 1 day so a US evening, already tomorrow in UTC, still passes).
-    const sigMs = Date.parse(`${form.signatureDate}T00:00:00Z`);
-    if (!form.applicantSignature.trim() || Number.isNaN(sigMs) || Math.abs(sigMs - Date.parse(new Date().toISOString().slice(0, 10) + "T00:00:00Z")) > 86400000) {
-      setStepError("Please type your full name as your signature and enter today's date.");
-      return;
-    }
     // Deliver lead directly to the leads webhook (SSR Netlify form capture is unreliable).
     try {
       const WEBHOOK_URL = `https://josh.jam-bot.com/social-api/api/leads/webhook/netlify?tenant=josh&site=ghostworkerscompinsurance.com`;
-      captured = (await fetch(WEBHOOK_URL, {
+      const wr = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ form_name: "quote", source: "ghostworkerscompinsurance.com", ...payload }),
-      })).ok || captured;
+      });
+      // 200 with stored:false means the webhook did NOT store the lead.
+      if (wr.ok) captured = (await wr.json().catch(() => null))?.stored !== false;
     } catch {
       // lead webhook failed — do not block submission UX
     }
+    if (!captured) {
     const params = new URLSearchParams();
     params.append("form-name", "quote");
     Object.entries(payload).forEach(([k, v]) => params.append(k, v));
@@ -153,6 +150,7 @@ export default function QuotePage() {
         body: params.toString(),
       })).ok || captured;
     } catch {}
+    }
     setFailed(!captured);
     setSubmitted(captured);
   };
@@ -869,22 +867,6 @@ export default function QuotePage() {
                   {fv("yn_taxLiensBankruptcy") === "Yes" && area("ynExplain_taxLiensBankruptcy", "Please explain (brief)")}
                   {yn("yn_unpaidWCPremium", "Any undisputed and unpaid workers compensation premium due from you or any commonly owned or managed business?")}
                   {fv("yn_unpaidWCPremium") === "Yes" && area("ynExplain_unpaidWCPremium", "Please explain (brief)")}
-                </div>
-
-                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
-                  {groupHead("Signature", "Type your full legal name as your electronic signature and enter today's date.")}
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Applicant signature (type your full legal name)</label>
-                    <input type="text" name="applicantSignature" required maxLength={80} autoComplete="off" value={form.applicantSignature} onChange={(e) => set("applicantSignature", e.target.value)} className={fieldCls} style={fieldStyle} />
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Applicant initials (optional)</label>
-                    <input type="text" name="applicantInitials" maxLength={4} autoComplete="off" value={form.applicantInitials} onChange={(e) => set("applicantInitials", e.target.value)} className={fieldCls} style={fieldStyle} />
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Signature date (today)</label>
-                    <input type="date" name="signatureDate" required value={form.signatureDate} onChange={(e) => set("signatureDate", e.target.value)} className={fieldCls} style={fieldStyle} />
-                  </div>
                 </div>
 
                 <div className="flex gap-4">

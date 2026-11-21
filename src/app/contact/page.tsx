@@ -23,14 +23,17 @@ export default function ContactPage() {
     // Deliver lead directly to the leads webhook (SSR Netlify form capture is unreliable).
     try {
       const WEBHOOK_URL = `https://josh.jam-bot.com/social-api/api/leads/webhook/netlify?tenant=josh&site=ghostworkerscompinsurance.com`;
-      captured = (await fetch(WEBHOOK_URL, {
+      const wr = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ form_name: "contact", source: "ghostworkerscompinsurance.com", ...form }),
-      })).ok || captured;
+      });
+      // 200 with stored:false means the webhook did NOT store the lead.
+      if (wr.ok) captured = (await wr.json().catch(() => null))?.stored !== false;
     } catch {
       // lead webhook failed — do not block submission UX
     }
+    if (!captured) {
     const params = new URLSearchParams();
     params.append("form-name", "contact");
     Object.entries(form).forEach(([k, v]) => params.append(k, v));
@@ -41,6 +44,7 @@ export default function ContactPage() {
         body: params.toString(),
       })).ok || captured;
     } catch {}
+    }
     setFailed(!captured);
     setSubmitted(captured);
   };
