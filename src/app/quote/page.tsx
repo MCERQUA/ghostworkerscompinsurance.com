@@ -37,6 +37,7 @@ export default function QuotePage() {
     "bot-field": "",
     streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "", certificateHolderName: "", certificateHolderAddress: "",
     dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "", coverageTerminatedExplanation: "", carrierNonRenewingExplanation: "", applicantSignature: "", signatureDate: "",
+    businessWebsite: "", secondaryPhone: "", sicCode: "", naicsCode: "", ncciRiskId: "", inspectionContactName: "", inspectionContactPhone: "", accountingContactName: "", accountingContactPhone: "", claimContactName: "", claimContactPhone: "", employersLiabilityLimit: "", priorPremium: "", yn_foreignCoverage: "", yn_voluntaryComp: "", yn_uslh: "", yn_aircraftWatercraft: "", ynExplain_aircraftWatercraft: "", yn_hazardousMaterial: "", ynExplain_hazardousMaterial: "", yn_undergroundOrHeights: "", ynExplain_undergroundOrHeights: "", yn_overWaterWork: "", ynExplain_overWaterWork: "", yn_otherBusiness: "", ynExplain_otherBusiness: "", yn_subletWithoutCOI: "", ynExplain_subletWithoutCOI: "", yn_safetyProgram: "", ynExplain_safetyProgram: "", yn_groupTransportation: "", ynExplain_groupTransportation: "", yn_minorsOrSeniors: "", ynExplain_minorsOrSeniors: "", yn_seasonalEmployees: "", ynExplain_seasonalEmployees: "", yn_volunteerLabor: "", ynExplain_volunteerLabor: "", yn_physicalHandicaps: "", ynExplain_physicalHandicaps: "", yn_outOfStateTravel: "", ynExplain_outOfStateTravel: "", yn_athleticTeams: "", ynExplain_athleticTeams: "", yn_physicalsRequired: "", ynExplain_physicalsRequired: "", yn_otherInsuranceWithCarrier: "", ynExplain_otherInsuranceWithCarrier: "", yn_employeeHealthPlan: "", ynExplain_employeeHealthPlan: "", yn_employeesOtherBusinesses: "", ynExplain_employeesOtherBusinesses: "", yn_leasedEmployees: "", ynExplain_leasedEmployees: "", yn_workFromHome: "", ynExplain_workFromHome: "", yn_taxLiensBankruptcy: "", ynExplain_taxLiensBankruptcy: "", yn_unpaidWCPremium: "", ynExplain_unpaidWCPremium: "",
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
@@ -416,8 +417,23 @@ export default function QuotePage() {
                     </select>
                   </div>
                   {form.entityType === "Other" && txt("entityTypeOther", "Entity type, other", "Describe")}
-                  {txt("fein", "FEIN (business tax ID, not an SSN)", "12-3456789")}
+                  {txt("fein", "Business FEIN (Federal Employer ID, 9 digits - never a Social Security number)", "12-3456789")}
                   {txt("experienceMod", "Experience mod, if you know it", "1.00")}
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  {groupHead("Contacts and identifiers", "Optional. Helps the carrier reach the right person. Do not enter Social Security numbers anywhere on this form.")}
+                  {txt("businessWebsite", "Business website", "https://")}
+                  {txt("secondaryPhone", "Secondary phone", "")}
+                  {txt("sicCode", "SIC code (if known)", "")}
+                  {txt("naicsCode", "NAICS code (if known)", "")}
+                  {txt("ncciRiskId", "NCCI risk ID or state rating bureau number (if you have one)", "")}
+                  {txt("inspectionContactName", "Contact for premises inspection", "")}
+                  {txt("inspectionContactPhone", "Inspection contact phone", "")}
+                  {txt("accountingContactName", "Billing / audit contact", "")}
+                  {txt("accountingContactPhone", "Billing / audit contact phone", "")}
+                  {txt("claimContactName", "Claims contact", "")}
+                  {txt("claimContactPhone", "Claims contact phone", "")}
                 </div>
 
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
@@ -741,6 +757,21 @@ export default function QuotePage() {
                 </div>
 
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  {groupHead("Coverage limits and prior premium", "Optional.")}
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Employers liability limits requested (each accident / disease policy / disease each employee)</label>
+                    <select name="employersLiabilityLimit" value={fv("employersLiabilityLimit")} onChange={(e) => set("employersLiabilityLimit", e.target.value)} className={fieldCls} style={fieldStyle}>
+                      <option value="">Select limits</option>
+                      <option value="100/500/100">$100,000 / $500,000 / $100,000</option>
+                      <option value="500/500/500">$500,000 / $500,000 / $500,000</option>
+                      <option value="1000/1000/1000">$1,000,000 / $1,000,000 / $1,000,000</option>
+                      <option value="Other">Other / not sure</option>
+                    </select>
+                  </div>
+                  {txt("priorPremium", "Annual premium on your current or most recent policy ($)", "", "number")}
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
                   {groupHead("Loss history", "Optional. Claims in the last 3 years. Do not include claimant names or medical details.")}
                   {yn("lossesLast3Years", "Any workers comp losses or claims in the last 3 years?")}
                   {form.lossesLast3Years === "Yes" && (
@@ -769,6 +800,57 @@ export default function QuotePage() {
                     borderClass="border-[#d1fae5]"
                     onFieldsChange={setOwnerFields}
                   />
+                </div>
+
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
+                  {groupHead("Workers' compensation questions", "Optional. Answer Yes or No; add a short explanation for any Yes.")}
+                  {yn("yn_foreignCoverage", "Do you need Foreign coverage?")}
+                  {yn("yn_voluntaryComp", "Do you want Voluntary Compensation coverage?")}
+                  {yn("yn_uslh", "Do you need U.S. Longshore and Harbor Workers (USL&H) coverage?")}
+                  {yn("yn_aircraftWatercraft", "Do you own, operate or lease aircraft or watercraft?")}
+                  {fv("yn_aircraftWatercraft") === "Yes" && area("ynExplain_aircraftWatercraft", "Please explain (brief)")}
+                  {yn("yn_hazardousMaterial", "Do past, present or discontinued operations involve storing, treating, discharging, applying, disposing of or transporting hazardous material?")}
+                  {fv("yn_hazardousMaterial") === "Yes" && area("ynExplain_hazardousMaterial", "Please explain (brief)")}
+                  {yn("yn_undergroundOrHeights", "Is any work performed underground or above 15 feet?")}
+                  {fv("yn_undergroundOrHeights") === "Yes" && area("ynExplain_undergroundOrHeights", "Please explain (brief)")}
+                  {yn("yn_overWaterWork", "Is any work performed on barges, vessels, docks or bridges over water?")}
+                  {fv("yn_overWaterWork") === "Yes" && area("ynExplain_overWaterWork", "Please explain (brief)")}
+                  {yn("yn_otherBusiness", "Are you engaged in any other type of business?")}
+                  {fv("yn_otherBusiness") === "Yes" && area("ynExplain_otherBusiness", "Please explain (brief)")}
+                  {yn("yn_subletWithoutCOI", "Is any work sublet without certificates of insurance?")}
+                  {fv("yn_subletWithoutCOI") === "Yes" && area("ynExplain_subletWithoutCOI", "Please explain (brief)")}
+                  {yn("yn_safetyProgram", "Is a written safety program in operation?")}
+                  {fv("yn_safetyProgram") === "Yes" && area("ynExplain_safetyProgram", "Please explain (brief)")}
+                  {yn("yn_groupTransportation", "Is any group transportation provided?")}
+                  {fv("yn_groupTransportation") === "Yes" && area("ynExplain_groupTransportation", "Please explain (brief)")}
+                  {yn("yn_minorsOrSeniors", "Any employees under 16 or over 60 years of age?")}
+                  {fv("yn_minorsOrSeniors") === "Yes" && area("ynExplain_minorsOrSeniors", "Please explain (brief)")}
+                  {yn("yn_seasonalEmployees", "Any seasonal employees?")}
+                  {fv("yn_seasonalEmployees") === "Yes" && area("ynExplain_seasonalEmployees", "Please explain (brief)")}
+                  {yn("yn_volunteerLabor", "Is there any volunteer or donated labor?")}
+                  {fv("yn_volunteerLabor") === "Yes" && area("ynExplain_volunteerLabor", "Please explain (brief)")}
+                  {yn("yn_physicalHandicaps", "Any employees with physical handicaps?")}
+                  {fv("yn_physicalHandicaps") === "Yes" && area("ynExplain_physicalHandicaps", "Please explain (brief)")}
+                  {yn("yn_outOfStateTravel", "Do employees travel out of state?")}
+                  {fv("yn_outOfStateTravel") === "Yes" && area("ynExplain_outOfStateTravel", "Please explain (brief)")}
+                  {yn("yn_athleticTeams", "Are athletic teams sponsored?")}
+                  {fv("yn_athleticTeams") === "Yes" && area("ynExplain_athleticTeams", "Please explain (brief)")}
+                  {yn("yn_physicalsRequired", "Are physicals required after offers of employment are made?")}
+                  {fv("yn_physicalsRequired") === "Yes" && area("ynExplain_physicalsRequired", "Please explain (brief)")}
+                  {yn("yn_otherInsuranceWithCarrier", "Any other insurance with this company?")}
+                  {fv("yn_otherInsuranceWithCarrier") === "Yes" && area("ynExplain_otherInsuranceWithCarrier", "Please explain (brief)")}
+                  {yn("yn_employeeHealthPlan", "Is an employee health plan provided?")}
+                  {fv("yn_employeeHealthPlan") === "Yes" && area("ynExplain_employeeHealthPlan", "Please explain (brief)")}
+                  {yn("yn_employeesOtherBusinesses", "Do any employees perform work for other businesses or subsidiaries?")}
+                  {fv("yn_employeesOtherBusinesses") === "Yes" && area("ynExplain_employeesOtherBusinesses", "Please explain (brief)")}
+                  {yn("yn_leasedEmployees", "Do you lease employees to or from other employers?")}
+                  {fv("yn_leasedEmployees") === "Yes" && area("ynExplain_leasedEmployees", "Please explain (brief)")}
+                  {yn("yn_workFromHome", "Do employees predominantly work from home?")}
+                  {fv("yn_workFromHome") === "Yes" && area("ynExplain_workFromHome", "Please explain (brief)")}
+                  {yn("yn_taxLiensBankruptcy", "Any tax liens or bankruptcy within the past 5 years?")}
+                  {fv("yn_taxLiensBankruptcy") === "Yes" && area("ynExplain_taxLiensBankruptcy", "Please explain (brief)")}
+                  {yn("yn_unpaidWCPremium", "Any undisputed and unpaid workers compensation premium due from you or any commonly owned or managed business?")}
+                  {fv("yn_unpaidWCPremium") === "Yes" && area("ynExplain_unpaidWCPremium", "Please explain (brief)")}
                 </div>
 
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
