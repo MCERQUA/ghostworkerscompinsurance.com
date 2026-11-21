@@ -38,7 +38,7 @@ export default function QuotePage() {
     priorExperienceMod: "", priorYear1Year: "", priorYear2Year: "", priorYear2Carrier: "", priorYear2Premium: "", priorYear2Mod: "", priorYear2ClaimCount: "", priorYear2Paid: "", priorYear2Reserved: "", priorYear3Year: "", priorYear3Carrier: "", priorYear3Premium: "", priorYear3Mod: "", priorYear3ClaimCount: "", priorYear3Paid: "", priorYear3Reserved: "", priorYear4Year: "", priorYear4Carrier: "", priorYear4Premium: "", priorYear4Mod: "", priorYear4ClaimCount: "", priorYear4Paid: "", priorYear4Reserved: "", priorYear5Year: "", priorYear5Carrier: "", priorYear5Premium: "", priorYear5Mod: "", priorYear5ClaimCount: "", priorYear5Paid: "", priorYear5Reserved: "",
     streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "", certificateHolderName: "", certificateHolderAddress: "",
     dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "", coverageTerminatedExplanation: "", carrierNonRenewingExplanation: "", 
-    businessWebsite: "", secondaryPhone: "", sicCode: "", naicsCode: "", ncciRiskId: "", inspectionContactName: "", inspectionContactPhone: "", accountingContactName: "", accountingContactPhone: "", claimContactName: "", claimContactPhone: "", employersLiabilityLimit: "", priorPremium: "", yn_foreignCoverage: "", yn_voluntaryComp: "", yn_uslh: "", yn_aircraftWatercraft: "", ynExplain_aircraftWatercraft: "", yn_hazardousMaterial: "", ynExplain_hazardousMaterial: "", yn_undergroundOrHeights: "", ynExplain_undergroundOrHeights: "", yn_overWaterWork: "", ynExplain_overWaterWork: "", yn_otherBusiness: "", ynExplain_otherBusiness: "", yn_subletWithoutCOI: "", ynExplain_subletWithoutCOI: "", yn_safetyProgram: "", ynExplain_safetyProgram: "", yn_groupTransportation: "", ynExplain_groupTransportation: "", yn_minorsOrSeniors: "", ynExplain_minorsOrSeniors: "", yn_seasonalEmployees: "", ynExplain_seasonalEmployees: "", yn_volunteerLabor: "", ynExplain_volunteerLabor: "", yn_physicalHandicaps: "", ynExplain_physicalHandicaps: "", yn_outOfStateTravel: "", ynExplain_outOfStateTravel: "", yn_athleticTeams: "", ynExplain_athleticTeams: "", yn_physicalsRequired: "", ynExplain_physicalsRequired: "", yn_otherInsuranceWithCarrier: "", ynExplain_otherInsuranceWithCarrier: "", yn_employeeHealthPlan: "", ynExplain_employeeHealthPlan: "", yn_employeesOtherBusinesses: "", ynExplain_employeesOtherBusinesses: "", yn_leasedEmployees: "", ynExplain_leasedEmployees: "", yn_workFromHome: "", ynExplain_workFromHome: "", yn_taxLiensBankruptcy: "", ynExplain_taxLiensBankruptcy: "", yn_unpaidWCPremium: "", ynExplain_unpaidWCPremium: "",
+    businessWebsite: "", secondaryPhone: "", sicCode: "", naicsCode: "", ncciRiskId: "", inspectionContactName: "", inspectionContactPhone: "", accountingContactName: "", accountingContactPhone: "", claimContactName: "", claimContactPhone: "", employersLiabilityLimit: "", elEachAccident: "", elDiseasePolicy: "", elDiseaseEachEmployee: "", desiredExpirationDate: "", priorPremium: "", yn_foreignCoverage: "", yn_voluntaryComp: "", yn_uslh: "", yn_aircraftWatercraft: "", ynExplain_aircraftWatercraft: "", yn_hazardousMaterial: "", ynExplain_hazardousMaterial: "", yn_undergroundOrHeights: "", ynExplain_undergroundOrHeights: "", yn_overWaterWork: "", ynExplain_overWaterWork: "", yn_otherBusiness: "", ynExplain_otherBusiness: "", yn_subletWithoutCOI: "", ynExplain_subletWithoutCOI: "", yn_safetyProgram: "", ynExplain_safetyProgram: "", yn_groupTransportation: "", ynExplain_groupTransportation: "", yn_minorsOrSeniors: "", ynExplain_minorsOrSeniors: "", yn_seasonalEmployees: "", ynExplain_seasonalEmployees: "", yn_volunteerLabor: "", ynExplain_volunteerLabor: "", yn_physicalHandicaps: "", ynExplain_physicalHandicaps: "", yn_outOfStateTravel: "", ynExplain_outOfStateTravel: "", yn_athleticTeams: "", ynExplain_athleticTeams: "", yn_physicalsRequired: "", ynExplain_physicalsRequired: "", yn_otherInsuranceWithCarrier: "", ynExplain_otherInsuranceWithCarrier: "", yn_employeeHealthPlan: "", ynExplain_employeeHealthPlan: "", yn_employeesOtherBusinesses: "", ynExplain_employeesOtherBusinesses: "", yn_leasedEmployees: "", ynExplain_leasedEmployees: "", yn_workFromHome: "", ynExplain_workFromHome: "", yn_taxLiensBankruptcy: "", ynExplain_taxLiensBankruptcy: "", yn_unpaidWCPremium: "", ynExplain_unpaidWCPremium: "",
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
@@ -582,6 +582,17 @@ export default function QuotePage() {
                   />
                 </div>
                 <div className="mb-4">
+                  <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Desired policy expiration date (optional)</label>
+                  <input
+                    type="date"
+                    name="desiredExpirationDate"
+                    value={form.desiredExpirationDate}
+                    onChange={(e) => set("desiredExpirationDate", e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none"
+                    style={{ borderColor: "#d1fae5", color: "#111827" }}
+                  />
+                </div>
+                <div className="mb-4">
                   <label className="block text-sm font-medium mb-3" style={{ color: "#374151" }}>Coverage Limits Needed</label>
                   <div className="flex flex-col gap-3">
                     {[
@@ -765,6 +776,33 @@ export default function QuotePage() {
                       <option value="500/500/500">$500,000 / $500,000 / $500,000</option>
                       <option value="1000/1000/1000">$1,000,000 / $1,000,000 / $1,000,000</option>
                       <option value="Other">Other / not sure</option>
+                    </select>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Employers liability: each accident</label>
+                    <select name="elEachAccident" value={fv("elEachAccident")} onChange={(e) => set("elEachAccident", e.target.value)} className={fieldCls} style={fieldStyle}>
+                      <option value="">Select...</option>
+                      <option value="100,000">100,000</option>
+                      <option value="500,000">500,000</option>
+                      <option value="1,000,000">1,000,000</option>
+                    </select>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Employers liability: disease, policy limit</label>
+                    <select name="elDiseasePolicy" value={fv("elDiseasePolicy")} onChange={(e) => set("elDiseasePolicy", e.target.value)} className={fieldCls} style={fieldStyle}>
+                      <option value="">Select...</option>
+                      <option value="100,000">100,000</option>
+                      <option value="500,000">500,000</option>
+                      <option value="1,000,000">1,000,000</option>
+                    </select>
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Employers liability: disease, each employee</label>
+                    <select name="elDiseaseEachEmployee" value={fv("elDiseaseEachEmployee")} onChange={(e) => set("elDiseaseEachEmployee", e.target.value)} className={fieldCls} style={fieldStyle}>
+                      <option value="">Select...</option>
+                      <option value="100,000">100,000</option>
+                      <option value="500,000">500,000</option>
+                      <option value="1,000,000">1,000,000</option>
                     </select>
                   </div>
                   {txt("priorPremium", "Annual premium on your current or most recent policy ($)", "", "number")}
