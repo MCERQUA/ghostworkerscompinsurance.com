@@ -35,6 +35,7 @@ export default function QuotePage() {
     coverageStart: "", limitsNeeded: "100/500",
     currentlyHaveWC: "no", additionalInsured: "no",
     "bot-field": "",
+    priorExperienceMod: "", applicantInitials: "", priorYear2Year: "", priorYear2Carrier: "", priorYear2Premium: "", priorYear2Mod: "", priorYear2ClaimCount: "", priorYear2Paid: "", priorYear2Reserved: "", priorYear3Year: "", priorYear3Carrier: "", priorYear3Premium: "", priorYear3Mod: "", priorYear3ClaimCount: "", priorYear3Paid: "", priorYear3Reserved: "", priorYear4Year: "", priorYear4Carrier: "", priorYear4Premium: "", priorYear4Mod: "", priorYear4ClaimCount: "", priorYear4Paid: "", priorYear4Reserved: "", priorYear5Year: "", priorYear5Carrier: "", priorYear5Premium: "", priorYear5Mod: "", priorYear5ClaimCount: "", priorYear5Paid: "", priorYear5Reserved: "",
     streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "", certificateHolderName: "", certificateHolderAddress: "",
     dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "", coverageTerminatedExplanation: "", carrierNonRenewingExplanation: "", applicantSignature: "", signatureDate: "",
     businessWebsite: "", secondaryPhone: "", sicCode: "", naicsCode: "", ncciRiskId: "", inspectionContactName: "", inspectionContactPhone: "", accountingContactName: "", accountingContactPhone: "", claimContactName: "", claimContactPhone: "", employersLiabilityLimit: "", priorPremium: "", yn_foreignCoverage: "", yn_voluntaryComp: "", yn_uslh: "", yn_aircraftWatercraft: "", ynExplain_aircraftWatercraft: "", yn_hazardousMaterial: "", ynExplain_hazardousMaterial: "", yn_undergroundOrHeights: "", ynExplain_undergroundOrHeights: "", yn_overWaterWork: "", ynExplain_overWaterWork: "", yn_otherBusiness: "", ynExplain_otherBusiness: "", yn_subletWithoutCOI: "", ynExplain_subletWithoutCOI: "", yn_safetyProgram: "", ynExplain_safetyProgram: "", yn_groupTransportation: "", ynExplain_groupTransportation: "", yn_minorsOrSeniors: "", ynExplain_minorsOrSeniors: "", yn_seasonalEmployees: "", ynExplain_seasonalEmployees: "", yn_volunteerLabor: "", ynExplain_volunteerLabor: "", yn_physicalHandicaps: "", ynExplain_physicalHandicaps: "", yn_outOfStateTravel: "", ynExplain_outOfStateTravel: "", yn_athleticTeams: "", ynExplain_athleticTeams: "", yn_physicalsRequired: "", ynExplain_physicalsRequired: "", yn_otherInsuranceWithCarrier: "", ynExplain_otherInsuranceWithCarrier: "", yn_employeeHealthPlan: "", ynExplain_employeeHealthPlan: "", yn_employeesOtherBusinesses: "", ynExplain_employeesOtherBusinesses: "", yn_leasedEmployees: "", ynExplain_leasedEmployees: "", yn_workFromHome: "", ynExplain_workFromHome: "", yn_taxLiensBankruptcy: "", ynExplain_taxLiensBankruptcy: "", yn_unpaidWCPremium: "", ynExplain_unpaidWCPremium: "",
@@ -769,6 +770,23 @@ export default function QuotePage() {
                     </select>
                   </div>
                   {txt("priorPremium", "Annual premium on your current or most recent policy ($)", "", "number")}
+                  {txt("priorExperienceMod", "Experience modification factor on your current or most recent policy", "e.g. 0.85")}
+                  <details className="mb-4">
+                    <summary className="cursor-pointer text-sm font-bold uppercase tracking-wider" style={{ color: "#111827" }}>Prior years 2 to 5 (optional, click to expand)</summary>
+                    <p className="text-xs mt-1 mb-4" style={{ color: "#6b7280" }}>Carrier, premium, experience mod and claims for each earlier policy year. Enter 0 if there were no claims.</p>
+                    {[2, 3, 4, 5].map((n) => (
+                      <div key={n} className="mb-4 pt-3" style={{ borderTop: "1px solid #d1fae5" }}>
+                        <p className="text-sm font-semibold mb-2" style={{ color: "#111827" }}>Policy year {n}</p>
+                        {txt(`priorYear${n}Year`, "Policy year", "e.g. 2023")}
+                        {txt(`priorYear${n}Carrier`, "Carrier name")}
+                        {txt(`priorYear${n}Premium`, "Premium ($)", "", "number")}
+                        {txt(`priorYear${n}Mod`, "Experience mod", "e.g. 0.85")}
+                        {txt(`priorYear${n}ClaimCount`, "Number of claims", "0 if none", "number")}
+                        {txt(`priorYear${n}Paid`, "Amount paid ($)", "0 if none", "number")}
+                        {txt(`priorYear${n}Reserved`, "Amount reserved ($)", "0 if none", "number")}
+                      </div>
+                    ))}
+                  </details>
                 </div>
 
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
@@ -858,6 +876,10 @@ export default function QuotePage() {
                   <div className="mb-4">
                     <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Applicant signature (type your full legal name)</label>
                     <input type="text" name="applicantSignature" required maxLength={80} autoComplete="off" value={form.applicantSignature} onChange={(e) => set("applicantSignature", e.target.value)} className={fieldCls} style={fieldStyle} />
+                  </div>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Applicant initials (optional)</label>
+                    <input type="text" name="applicantInitials" maxLength={4} autoComplete="off" value={form.applicantInitials} onChange={(e) => set("applicantInitials", e.target.value)} className={fieldCls} style={fieldStyle} />
                   </div>
                   <div className="mb-4">
                     <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Signature date (today)</label>
