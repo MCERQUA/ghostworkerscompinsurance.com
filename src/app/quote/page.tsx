@@ -38,7 +38,7 @@ export default function QuotePage() {
     priorExperienceMod: "", priorYear1Year: "", priorYear2Year: "", priorYear2Carrier: "", priorYear2Premium: "", priorYear2Mod: "", priorYear2ClaimCount: "", priorYear2Paid: "", priorYear2Reserved: "", priorYear3Year: "", priorYear3Carrier: "", priorYear3Premium: "", priorYear3Mod: "", priorYear3ClaimCount: "", priorYear3Paid: "", priorYear3Reserved: "", priorYear4Year: "", priorYear4Carrier: "", priorYear4Premium: "", priorYear4Mod: "", priorYear4ClaimCount: "", priorYear4Paid: "", priorYear4Reserved: "", priorYear5Year: "", priorYear5Carrier: "", priorYear5Premium: "", priorYear5Mod: "", priorYear5ClaimCount: "", priorYear5Paid: "", priorYear5Reserved: "",
     streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "", certificateHolderName: "", certificateHolderAddress: "",
     classDuties1: "", classFullTime1: "", classPartTime1: "", classDuties2: "", classFullTime2: "", classPartTime2: "", classDuties3: "", classFullTime3: "", classPartTime3: "", classDuties4: "", classFullTime4: "", classPartTime4: "", classDuties5: "", classFullTime5: "", classPartTime5: "", priorYear1ClaimCount: "", priorYear1Paid: "", priorYear1Reserved: "", dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "", coverageTerminatedExplanation: "", carrierNonRenewingExplanation: "", 
-    businessWebsite: "", secondaryPhone: "", sicCode: "", naicsCode: "", ncciRiskId: "", inspectionContactName: "", inspectionContactPhone: "", accountingContactName: "", accountingContactPhone: "", claimContactName: "", claimContactPhone: "", employersLiabilityLimit: "", elEachAccident: "", elDiseasePolicy: "", elDiseaseEachEmployee: "", desiredExpirationDate: "", priorPremium: "", yn_foreignCoverage: "", yn_voluntaryComp: "", yn_uslh: "", yn_aircraftWatercraft: "", ynExplain_aircraftWatercraft: "", yn_hazardousMaterial: "", ynExplain_hazardousMaterial: "", yn_undergroundOrHeights: "", ynExplain_undergroundOrHeights: "", yn_overWaterWork: "", ynExplain_overWaterWork: "", yn_otherBusiness: "", ynExplain_otherBusiness: "", yn_subletWithoutCOI: "", ynExplain_subletWithoutCOI: "", yn_safetyProgram: "", ynExplain_safetyProgram: "", yn_groupTransportation: "", ynExplain_groupTransportation: "", yn_minorsOrSeniors: "", ynExplain_minorsOrSeniors: "", yn_seasonalEmployees: "", ynExplain_seasonalEmployees: "", yn_volunteerLabor: "", ynExplain_volunteerLabor: "", yn_physicalHandicaps: "", ynExplain_physicalHandicaps: "", yn_outOfStateTravel: "", ynExplain_outOfStateTravel: "", yn_athleticTeams: "", ynExplain_athleticTeams: "", yn_physicalsRequired: "", ynExplain_physicalsRequired: "", yn_otherInsuranceWithCarrier: "", ynExplain_otherInsuranceWithCarrier: "", yn_employeeHealthPlan: "", ynExplain_employeeHealthPlan: "", yn_employeesOtherBusinesses: "", ynExplain_employeesOtherBusinesses: "", yn_leasedEmployees: "", ynExplain_leasedEmployees: "", yn_workFromHome: "", ynExplain_workFromHome: "", yn_taxLiensBankruptcy: "", ynExplain_taxLiensBankruptcy: "", yn_unpaidWCPremium: "", ynExplain_unpaidWCPremium: "",
+    businessWebsite: "", secondaryPhone: "", sicCode: "", naicsCode: "", ncciRiskId: "", inspectionContactName: "", inspectionContactPhone: "", accountingContactName: "", accountingContactPhone: "", claimContactName: "", claimContactPhone: "", employersLiabilityLimit: "", elEachAccident: "", elDiseasePolicy: "", elDiseaseEachEmployee: "", desiredExpirationDate: "", priorPremium: "", yn_foreignCoverage: "", yn_voluntaryComp: "", yn_uslh: "", yn_aircraftWatercraft: "", ynExplain_aircraftWatercraft: "", yn_hazardousMaterial: "", ynExplain_hazardousMaterial: "", yn_undergroundOrHeights: "", ynExplain_undergroundOrHeights: "", yn_overWaterWork: "", ynExplain_overWaterWork: "", yn_otherBusiness: "", ynExplain_otherBusiness: "", yn_subletWithoutCOI: "", ynExplain_subletWithoutCOI: "", yn_safetyProgram: "", ynExplain_safetyProgram: "", yn_groupTransportation: "", ynExplain_groupTransportation: "", yn_minorsOrSeniors: "", ynExplain_minorsOrSeniors: "", yn_seasonalEmployees: "", ynExplain_seasonalEmployees: "", yn_volunteerLabor: "", ynExplain_volunteerLabor: "", yn_physicalHandicaps: "", ynExplain_physicalHandicaps: "", yn_outOfStateTravel: "", ynExplain_outOfStateTravel: "", yn_athleticTeams: "", ynExplain_athleticTeams: "", yn_physicalsRequired: "", ynExplain_physicalsRequired: "", yn_otherInsuranceWithCarrier: "", ynExplain_otherInsuranceWithCarrier: "", yn_employeeHealthPlan: "", ynExplain_employeeHealthPlan: "", yn_employeesOtherBusinesses: "", ynExplain_employeesOtherBusinesses: "", yn_leasedEmployees: "", ynExplain_leasedEmployees: "", yn_workFromHome: "", ynExplain_workFromHome: "", yn_taxLiensBankruptcy: "", ynExplain_taxLiensBankruptcy: "", yn_unpaidWCPremium: "", ynExplain_unpaidWCPremium: "", ynExplain_usesSubcontractors: "", travelStates: "", workFromHomeCount: "",
   });
 
   const set = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
@@ -58,6 +58,12 @@ export default function QuotePage() {
     <div className="mb-4" key={name}>
       <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>{label}</label>
       <textarea name={name} rows={3} value={fv(name)} onChange={(e) => set(name, e.target.value)} placeholder={placeholder} className={fieldCls} style={fieldStyle} />
+    </div>
+  );
+  const req = (name: string, label: string) => (
+    <div className="mb-4" key={name}>
+      <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>{label}</label>
+      <textarea name={name} rows={3} required value={fv(name)} onChange={(e) => set(name, e.target.value)} className={fieldCls} style={fieldStyle} />
     </div>
   );
   const yn = (name: string, label: string, opts: string[] = ["Yes", "No"]) => (
@@ -130,6 +136,12 @@ export default function QuotePage() {
     if (form.coverageTerminatedExplanation) mirror.ynExplain_declinedCancelled = form.coverageTerminatedExplanation;
     const payload = { ...form, ...ownerFields, ...mirror, name: `${form.firstName} ${form.lastName}`.trim() };
     if (form["bot-field"]) return;
+    // The ACORD 130 has room for 10 states in Part Three; more than that must go in the explanation.
+    if (form.yn_outOfStateTravel === "Yes" && fv("travelStates").split(/[,;/]|\band\b/i).filter((x) => x.trim()).length > 10) {
+      setFailed(false);
+      setStepError("Please list no more than 10 states in the travel states box and name any others in the explanation above it.");
+      return;
+    }
     // Deliver lead directly to the leads webhook (SSR Netlify form capture is unreliable).
     try {
       const WEBHOOK_URL = `https://josh.jam-bot.com/social-api/api/leads/webhook/netlify?tenant=josh&site=ghostworkerscompinsurance.com`;
@@ -745,6 +757,7 @@ export default function QuotePage() {
                   <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#111827" }}>Subcontractor insurance</h3>
                   <p className="text-xs mb-4" style={{ color: "#6b7280" }}>How subcontracted work is covered.</p>
                   {yn("usesSubcontractors", "Do you use subcontractors?")}
+                  {fv("usesSubcontractors") === "Yes" && req("ynExplain_usesSubcontractors", "Please explain how subcontractors are used *")}
                   {txt("percentSubcontracted", "Percent of work subcontracted", "25")}
                   {yn("subsProvideCOI", "Do your subcontractors provide certificates of insurance?")}
                   <div className="mb-4">
@@ -773,7 +786,7 @@ export default function QuotePage() {
                     <input type="date" name="priorPolicyExpiration" value={form.priorPolicyExpiration} onChange={(e) => set("priorPolicyExpiration", e.target.value)} className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
                   </div>
                   {yn("coverageTerminated", "Has any workers comp coverage been cancelled or non-renewed in the past 3 years?")}
-                  {form.coverageTerminated === "Yes" && area("coverageTerminatedExplanation", "Please explain: which carrier, when, and why", "")}
+                  {form.coverageTerminated === "Yes" && req("coverageTerminatedExplanation", "Please explain: which carrier, when, and why *")}
                   {yn("carrierNonRenewing", "Is your current carrier non-renewing you?")}
                   {form.carrierNonRenewing === "Yes" && area("carrierNonRenewingExplanation", "Please explain: what reason did the carrier give?", "")}
                 </div>
@@ -903,6 +916,8 @@ export default function QuotePage() {
                   {fv("yn_physicalHandicaps") === "Yes" && area("ynExplain_physicalHandicaps", "Please explain (brief)")}
                   {yn("yn_outOfStateTravel", "Do employees travel out of state?")}
                   {fv("yn_outOfStateTravel") === "Yes" && area("ynExplain_outOfStateTravel", "Please explain (brief)")}
+                  {fv("yn_outOfStateTravel") === "Yes" && txt("travelStates", "Which states do employees travel to? *", "e.g. Nevada, Utah, Texas", "text", { maxLength: 120, required: true })}
+                  {fv("yn_outOfStateTravel") === "Yes" && <p className="text-xs -mt-2 mb-4" style={{ color: "#6b7280" }}>List up to 10 states, separated by commas. If there are more, list the first 10 here and name the rest in the explanation above.</p>}
                   {yn("yn_athleticTeams", "Are athletic teams sponsored?")}
                   {fv("yn_athleticTeams") === "Yes" && area("ynExplain_athleticTeams", "Please explain (brief)")}
                   {yn("yn_physicalsRequired", "Are physicals required after offers of employment are made?")}
@@ -917,6 +932,7 @@ export default function QuotePage() {
                   {fv("yn_leasedEmployees") === "Yes" && area("ynExplain_leasedEmployees", "Please explain (brief)")}
                   {yn("yn_workFromHome", "Do employees predominantly work from home?")}
                   {fv("yn_workFromHome") === "Yes" && area("ynExplain_workFromHome", "Please explain (brief)")}
+                  {fv("yn_workFromHome") === "Yes" && txt("workFromHomeCount", "How many employees work from home? *", "", "number", { inputMode: "numeric", required: true })}
                   {yn("yn_taxLiensBankruptcy", "Any tax liens or bankruptcy within the past 5 years?")}
                   {fv("yn_taxLiensBankruptcy") === "Yes" && area("ynExplain_taxLiensBankruptcy", "Please explain (brief)")}
                   {yn("yn_unpaidWCPremium", "Any undisputed and unpaid workers compensation premium due from you or any commonly owned or managed business?")}
