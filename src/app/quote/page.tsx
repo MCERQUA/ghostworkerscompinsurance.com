@@ -37,7 +37,7 @@ export default function QuotePage() {
     "bot-field": "",
     priorExperienceMod: "", priorYear1Year: "", priorYear2Year: "", priorYear2Carrier: "", priorYear2Premium: "", priorYear2Mod: "", priorYear2ClaimCount: "", priorYear2Paid: "", priorYear2Reserved: "", priorYear3Year: "", priorYear3Carrier: "", priorYear3Premium: "", priorYear3Mod: "", priorYear3ClaimCount: "", priorYear3Paid: "", priorYear3Reserved: "", priorYear4Year: "", priorYear4Carrier: "", priorYear4Premium: "", priorYear4Mod: "", priorYear4ClaimCount: "", priorYear4Paid: "", priorYear4Reserved: "", priorYear5Year: "", priorYear5Carrier: "", priorYear5Premium: "", priorYear5Mod: "", priorYear5ClaimCount: "", priorYear5Paid: "", priorYear5Reserved: "",
     streetAddress: "", city: "", zip: "", priorYearGrossSales: "", priorYearSubcontractorExpenses: "", priorYearEmployeeCount: "", priorYearEmployeePayroll: "", estimatedGrossSales: "", estimatedSubcontractorExpenses: "", estimatedEmployeeCount: "", estimatedEmployeePayroll: "", estimatedMaterialCosts: "", subcontractorsHaveInsurance: "", percentSubcontractorsInsured: "", coverageForUninsuredSubcontractors: "", coverageTypes: "", annualGrossSales: "", yearBusinessStarted: "", businessDescription: "", classCode1: "", classCode2: "", classCode3: "", classCode4: "", classCode5: "", residentialVsCommercial: "", newVsExistingConstruction: "", largestProjects: "", priorCarrierName: "", priorPolicyExpiration: "", ownerNames: "", ownerDateOfBirth: "", ownerOwnershipPct: "", numberOfEmployees: "", amountOfPayroll: "", hasClericalStaff: "", clericalStaffCount: "", hasSalesStaff: "", salesStaffCount: "", officeVsFieldSplit: "", certificateHolderName: "", certificateHolderAddress: "",
-    dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "", coverageTerminatedExplanation: "", carrierNonRenewingExplanation: "", 
+    classDuties1: "", classFullTime1: "", classPartTime1: "", classDuties2: "", classFullTime2: "", classPartTime2: "", classDuties3: "", classFullTime3: "", classPartTime3: "", classDuties4: "", classFullTime4: "", classPartTime4: "", classDuties5: "", classFullTime5: "", classPartTime5: "", priorYear1ClaimCount: "", priorYear1Paid: "", priorYear1Reserved: "", dba: "", entityType: "", entityTypeOther: "", fein: "", experienceMod: "", mailingSameAsPhysical: "", mailingAddress: "", mailingCity: "", mailingState: "", mailingZip: "", physicalCounty: "", fullTimeEmployees: "", partTimeEmployees: "", classPayroll1: "", classPayroll2: "", classPayroll3: "", classPayroll4: "", classPayroll5: "", usesSubcontractors: "", percentSubcontracted: "", subsProvideCOI: "", additionalInsuredName: "", coverageTerminated: "", carrierNonRenewing: "", lossesLast3Years: "", lossCount: "", lossDate: "", lossLineOfBusiness: "", lossDescription: "", lossAmountPaid: "", lossAmountReserved: "", lossHistoryStatus: "", lossAdditional: "", coverageTerminatedExplanation: "", carrierNonRenewingExplanation: "", 
     businessWebsite: "", secondaryPhone: "", sicCode: "", naicsCode: "", ncciRiskId: "", inspectionContactName: "", inspectionContactPhone: "", accountingContactName: "", accountingContactPhone: "", claimContactName: "", claimContactPhone: "", employersLiabilityLimit: "", elEachAccident: "", elDiseasePolicy: "", elDiseaseEachEmployee: "", desiredExpirationDate: "", priorPremium: "", yn_foreignCoverage: "", yn_voluntaryComp: "", yn_uslh: "", yn_aircraftWatercraft: "", ynExplain_aircraftWatercraft: "", yn_hazardousMaterial: "", ynExplain_hazardousMaterial: "", yn_undergroundOrHeights: "", ynExplain_undergroundOrHeights: "", yn_overWaterWork: "", ynExplain_overWaterWork: "", yn_otherBusiness: "", ynExplain_otherBusiness: "", yn_subletWithoutCOI: "", ynExplain_subletWithoutCOI: "", yn_safetyProgram: "", ynExplain_safetyProgram: "", yn_groupTransportation: "", ynExplain_groupTransportation: "", yn_minorsOrSeniors: "", ynExplain_minorsOrSeniors: "", yn_seasonalEmployees: "", ynExplain_seasonalEmployees: "", yn_volunteerLabor: "", ynExplain_volunteerLabor: "", yn_physicalHandicaps: "", ynExplain_physicalHandicaps: "", yn_outOfStateTravel: "", ynExplain_outOfStateTravel: "", yn_athleticTeams: "", ynExplain_athleticTeams: "", yn_physicalsRequired: "", ynExplain_physicalsRequired: "", yn_otherInsuranceWithCarrier: "", ynExplain_otherInsuranceWithCarrier: "", yn_employeeHealthPlan: "", ynExplain_employeeHealthPlan: "", yn_employeesOtherBusinesses: "", ynExplain_employeesOtherBusinesses: "", yn_leasedEmployees: "", ynExplain_leasedEmployees: "", yn_workFromHome: "", ynExplain_workFromHome: "", yn_taxLiensBankruptcy: "", ynExplain_taxLiensBankruptcy: "", yn_unpaidWCPremium: "", ynExplain_unpaidWCPremium: "",
   });
 
@@ -48,10 +48,10 @@ export default function QuotePage() {
   const fieldStyle = { borderColor: "#d1fae5", color: "#111827" };
   const fieldCls = "w-full px-4 py-3 rounded-xl border text-sm focus:outline-none";
   const fv = (k: string) => (form as Record<string, string>)[k] || "";
-  const txt = (name: string, label: string, placeholder = "", type = "text", opts: { maxLength?: number; inputMode?: "numeric" } = {}) => (
+  const txt = (name: string, label: string, placeholder = "", type = "text", opts: { maxLength?: number; inputMode?: "numeric"; required?: boolean } = {}) => (
     <div className="mb-4" key={name}>
-      <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>{label}</label>
-      <input type={type} name={name} maxLength={opts.maxLength} inputMode={opts.inputMode} value={fv(name)} onChange={(e) => set(name, e.target.value)} placeholder={placeholder} className={fieldCls} style={fieldStyle} />
+      <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>{label}{opts.required ? " *" : ""}</label>
+      <input type={type} name={name} required={opts.required} maxLength={opts.maxLength} inputMode={opts.inputMode} value={fv(name)} onChange={(e) => set(name, e.target.value)} placeholder={placeholder} className={fieldCls} style={fieldStyle} />
     </div>
   );
   const area = (name: string, label: string, placeholder = "") => (
@@ -95,7 +95,7 @@ export default function QuotePage() {
   };
   const LABELS: Record<string, string> = {
     firstName: "first name", lastName: "last name", email: "email", phone: "phone",
-    businessName: "business name", state: "state", trade: "trade",
+    businessName: "business name", state: "state", trade: "trade", entityType: "entity type", classCode1: "class code 1", classPayroll1: "payroll for class code 1", classDuties1: "class code 1 work description", classFullTime1: "class code 1 full-time employees", classPartTime1: "class code 1 part-time employees",
   };
   const advance = (names: string[], next: number) => {
     const dom = readDom(names);
@@ -124,7 +124,11 @@ export default function QuotePage() {
     let captured = false;
     // The leads DB promotes `name`/`full_name` only; this form collects the name in two
     // halves, so send a joined `name` in the payload as well. The UI is unchanged.
-    const payload = { ...form, ...ownerFields, name: `${form.firstName} ${form.lastName}`.trim() };
+    // Mirror the cancelled/declined/non-renewed answer under the name the ACORD 130 mapper reads (add-only; blank stays blank).
+    const mirror: Record<string, string> = {};
+    if (form.coverageTerminated) mirror.declinedCancelled = form.coverageTerminated;
+    if (form.coverageTerminatedExplanation) mirror.ynExplain_declinedCancelled = form.coverageTerminatedExplanation;
+    const payload = { ...form, ...ownerFields, ...mirror, name: `${form.firstName} ${form.lastName}`.trim() };
     if (form["bot-field"]) return;
     // Deliver lead directly to the leads webhook (SSR Netlify form capture is unreliable).
     try {
@@ -406,11 +410,11 @@ export default function QuotePage() {
                   </div>
                 </div>
                 <div className="mt-6 pt-5" style={{ borderTop: "1px solid #d1fae5" }}>
-                  {groupHead("Business identification", "Optional. Helps us prepare your application faster.")}
+                  {groupHead("Business identification", "Entity type is required; the rest is optional and helps us prepare your application faster.")}
                   {txt("dba", "Doing business as (DBA), if different", "Trade name")}
                   <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Entity type</label>
-                    <select name="entityType" value={form.entityType} onChange={(e) => set("entityType", e.target.value)} className={fieldCls} style={fieldStyle}>
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Entity type *</label>
+                    <select name="entityType" required value={form.entityType} onChange={(e) => set("entityType", e.target.value)} className={fieldCls} style={fieldStyle}>
                       <option value="">Select entity type</option>
                       {["Sole proprietor", "Partnership", "LLC", "Corporation", "S-Corporation", "Joint venture", "Other"].map((t) => <option key={t} value={t}>{t}</option>)}
                     </select>
@@ -503,8 +507,8 @@ export default function QuotePage() {
                     <input type="text" name="amountOfPayroll" value={form.amountOfPayroll} onChange={(e) => set("amountOfPayroll", e.target.value)} placeholder="$420,000" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Class code 1</label>
-                    <input type="text" name="classCode1" value={form.classCode1} onChange={(e) => set("classCode1", e.target.value)} placeholder="5403" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Class code 1 *</label>
+                    <input type="text" name="classCode1" required value={form.classCode1} onChange={(e) => set("classCode1", e.target.value)} placeholder="5403" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
                   </div>
                   <div className="mb-4">
                     <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Class code 2</label>
@@ -524,7 +528,15 @@ export default function QuotePage() {
                   </div>
                   {txt("fullTimeEmployees", "Full-time employees", "6")}
                   {txt("partTimeEmployees", "Part-time employees", "2")}
-                  {[1, 2, 3, 4, 5].map((n) => txt(`classPayroll${n}`, `Payroll for class code ${n}`, "$"))}
+                  {[1, 2, 3, 4, 5].map((n) => txt(`classPayroll${n}`, `Payroll for class code ${n}`, "$", "text", n === 1 ? { required: true } : {}))}
+                  {groupHead("Class code details", "For each class code: what the work is and how many people. Class 1 is required; enter 0 if no part-time staff.")}
+                  {[1, 2, 3, 4, 5].map((n) => (
+                    <div key={n}>
+                      {txt(`classDuties${n}`, `Class code ${n}: description of the work`, "e.g. framing, finish carpentry", "text", n === 1 ? { required: true, maxLength: 42 } : { maxLength: 42 })}
+                      {txt(`classFullTime${n}`, `Class code ${n}: full-time employees`, "6", "text", n === 1 ? { required: true, inputMode: "numeric", maxLength: 5 } : { inputMode: "numeric", maxLength: 5 })}
+                      {txt(`classPartTime${n}`, `Class code ${n}: part-time employees`, "0", "text", n === 1 ? { required: true, inputMode: "numeric", maxLength: 5 } : { inputMode: "numeric", maxLength: 5 })}
+                    </div>
+                  ))}
                   <div className="mb-4">
                     <label className="block text-sm font-medium mb-2" style={{ color: "#374151" }}>Office vs field split</label>
                     <input type="text" name="officeVsFieldSplit" value={form.officeVsFieldSplit} onChange={(e) => set("officeVsFieldSplit", e.target.value)} placeholder="2 office / 6 field" className="w-full px-4 py-3 rounded-xl border text-sm focus:outline-none" style={{ borderColor: "#d1fae5", color: "#111827" }} />
@@ -551,7 +563,7 @@ export default function QuotePage() {
                   <button type="button" onClick={() => { setStepError(""); setStep(1); }} className="btn-secondary flex-1 justify-center">Back</button>
                   <button
                     type="button"
-                    onClick={() => advance(["businessName", "state", "trade"], 3)}
+                    onClick={() => advance(["businessName", "state", "trade", "entityType", "classCode1", "classPayroll1", "classDuties1", "classFullTime1", "classPartTime1"], 3)}
                     className="btn-primary flex-1 justify-center"
                   >
                     Continue <ArrowRight size={18} />
@@ -808,6 +820,9 @@ export default function QuotePage() {
                   {txt("priorPremium", "Annual premium on your current or most recent policy ($)", "", "number")}
                   {txt("priorExperienceMod", "Experience modification factor on your current or most recent policy", "e.g. 0.85")}
                   {txt("priorYear1Year", "Year 1: policy year (current or most recent)", "e.g. 2025", "text", { maxLength: 4, inputMode: "numeric" })}
+                  {txt("priorYear1ClaimCount", "Year 1: number of claims", "0 if none", "number", { required: true })}
+                  {txt("priorYear1Paid", "Year 1: amount paid ($)", "0 if none", "number", { required: true })}
+                  {txt("priorYear1Reserved", "Year 1: amount reserved ($)", "0 if none", "number", { required: true })}
                   <details className="mb-4">
                     <summary className="cursor-pointer text-sm font-bold uppercase tracking-wider" style={{ color: "#111827" }}>Prior years 2 to 5 (optional, click to expand)</summary>
                     <p className="text-xs mt-1 mb-4" style={{ color: "#6b7280" }}>Carrier, premium, experience mod and claims for each earlier policy year. Enter 0 if there were no claims.</p>

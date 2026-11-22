@@ -183,11 +183,12 @@ export function OwnersFieldset({
               )}
             </div>
             <div>
-              <label htmlFor={id("name")} className={labelClass}>Owner or officer name</label>
+              <label htmlFor={id("name")} className={labelClass}>Owner or officer name *</label>
               <input
                 ref={(el) => { rowRefs.current[i] = el; }}
                 id={id("name")}
                 name={n.name}
+                required={i === 0}
                 type="text"
                 autoComplete={i === 0 ? "name" : "off"}
                 value={o.name}
@@ -199,10 +200,11 @@ export function OwnersFieldset({
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
-                <label htmlFor={id("dob")} className={labelClass}>Date of birth</label>
+                <label htmlFor={id("dob")} className={labelClass}>Date of birth{i === 0 ? " *" : ""}</label>
                 <input
                   id={id("dob")}
                   name={n.dob}
+                  required={i === 0}
                   type="date"
                   value={o.dob}
                   onChange={(e) => update(i, "dob", e.target.value)}
