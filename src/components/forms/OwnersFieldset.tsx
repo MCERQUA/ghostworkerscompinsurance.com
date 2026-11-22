@@ -282,12 +282,14 @@ export function OwnersFieldset({
                   id={id("title")}
                   name={n.title}
                   type="text"
-                  maxLength={80}
+                  maxLength={12}
+                  aria-describedby={id("title-hint")}
                   value={o.title}
                   onChange={(e) => update(i, "title", e.target.value)}
-                  placeholder="e.g. President, spouse"
+                  placeholder="Owner"
                   className={inputClass}
                 />
+                <p id={id("title-hint")} className="mt-1 text-xs text-gray-600">up to 12 characters (e.g. Owner, President)</p>
               </div>
             </div>
           </div>
